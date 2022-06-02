@@ -1,0 +1,26 @@
+<h1 class="mt-5">Pokemons</h1>
+<hr>
+
+<button class="btn btn-primary" (click)="previousPage()" >Anteriores</button>
+&nbsp; 
+<button class="btn btn-primary" (click)="nextPage()">Siguientes</button>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page">
+            <td [ngStyle]="{'width' : '100px'}">{{pokemon.id}}</td>
+            <td [ngStyle]="{'width' : '150px'}">{{pokemon.name}}</td>
+            <td>
+                <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '70px'}" />
+            </td>
+        </tr>
+    </tbody>
+</table>

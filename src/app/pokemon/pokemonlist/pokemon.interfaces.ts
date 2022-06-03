@@ -42,6 +42,7 @@ export interface PokemonDetail {
     name: string;
     pic: string;
     stats: Stats[];
+    types: string[];
 }
 
 export interface Stats {

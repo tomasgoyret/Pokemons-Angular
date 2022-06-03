@@ -57,7 +57,8 @@ export class PokemonService {
           points: p.base_stat
         }
         return stats
-      })
+      }),
+      types: resp.types.map( t => t.type.name)
     }
     return pokemonbyID
   }

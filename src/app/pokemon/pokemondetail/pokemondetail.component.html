@@ -4,8 +4,13 @@
 
 <div *ngIf="loaded">
     <h1 class="h1">{{pokemonDetail.name | uppercase}}</h1>
-    &nbsp;
     <button class="btn btn-primary" (click)="goBack()">Volver</button>
+    <br>
+
+    
+    <h2>Tipo: </h2>
+    <h3 [ngStyle]="{'color' : 'grey'}" *ngFor="let tipo of pokemonDetail.types">    {{tipo}}   </h3>
+    &nbsp;
     
     <img class="rounded mx-auto d-block" src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '300px'}"
         alt=" Sin imagen" />

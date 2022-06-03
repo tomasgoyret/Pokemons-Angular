@@ -16,7 +16,8 @@ export class PokemondetailComponent implements OnInit {
     id: 0,
     name: "",
     pic: "",
-    stats: []
+    stats: [],
+    types: []
   };
   
   constructor(

@@ -1,0 +1,33 @@
+<div *ngIf="!loaded">
+    <h1>Cargando...</h1>
+</div>
+
+<div *ngIf="loaded">
+    <h1 class="h1">{{pokemonDetail.name | uppercase}}</h1>
+    &nbsp;
+    <button class="btn btn-primary" (click)="goBack()">Volver</button>
+    
+    <img class="rounded mx-auto d-block" src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '300px'}"
+        alt=" Sin imagen" />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Habilidad</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [ngStyle]="{'height' : '100px'}" *ngFor="let stats of pokemonDetail.stats">
+
+                <td [ngStyle]="{'width' : '100px'}">
+                    {{stats.name}}
+                </td>
+                <td [ngStyle]="{'width' : '100px'}">
+                    {{stats.points}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

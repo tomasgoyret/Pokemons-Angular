@@ -52,6 +52,7 @@ export class PokemonlistComponent implements OnInit {
   }
   orderZA(){
     this.page = 0;
+    this.search = "";
     this.pokemonService.getAllPokemons()
       .subscribe( resp => {
         const orderedPokemons = resp.sort(function (a, b) {

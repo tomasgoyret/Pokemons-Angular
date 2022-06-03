@@ -15,3 +15,36 @@ export interface Pokemon {
     name: string;
     pic: string;
 }
+
+export interface FetchPokemonDetail {
+    abilities: any[];
+    base_experience: number;
+    forms: string[];
+    game_indices: any[];
+    height: number;
+    held_items: any[];
+    id: number;
+    is_default: boolean;
+    location_area_encounters: string;
+    moves: any[];
+    name: string;
+    order: number;
+    past_types: any[];
+    species: object;
+    sprites: object;
+    stats: any[];
+    types: any[];
+    weight: number;
+}
+
+export interface PokemonDetail {
+    id: number;
+    name: string;
+    pic: string;
+    stats: Stats[];
+}
+
+export interface Stats {
+    name: string;
+    points: number;
+}

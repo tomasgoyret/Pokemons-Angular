@@ -20,6 +20,7 @@ export class PokemonService {
         map( this.transformSmallPokemonIntoPokemon )
       )
   }
+  
 
 
   private transformSmallPokemonIntoPokemon(resp : FetchAllPokemonResponse) {

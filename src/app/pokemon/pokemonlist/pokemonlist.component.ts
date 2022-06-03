@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from './pokemon.interfaces';
 
@@ -19,6 +19,9 @@ export class PokemonlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.page = 0;
+    this.search = "";
+    this.pokemons = [];
     this.pokemonService.getAllPokemons()
       .subscribe(resp => {
         this.pokemons = resp
@@ -28,6 +31,39 @@ export class PokemonlistComponent implements OnInit {
   onSearchPokemon(search : string){
     this.page = 0;
     this.search = search;
+  }
+
+  orderAZ(){
+    this.pokemonService.getAllPokemons()
+      .subscribe( resp => {
+        const orderedPokemons = resp.sort(function (a, b) {
+          if (a.name > b.name) {
+            return 1;
+          }
+          if (a.name < b.name) {
+            return -1;
+          }
+          return 0;
+        });
+        this.pokemons = orderedPokemons;
+      }
+      )
+  }
+  orderZA(){
+    this.pokemonService.getAllPokemons()
+      .subscribe( resp => {
+        const orderedPokemons = resp.sort(function (a, b) {
+          if (a.name > b.name) {
+            return -1;
+          }
+          if (a.name < b.name) {
+            return 1;
+          }
+          return 0;
+        });
+        this.pokemons = orderedPokemons;
+      }
+      )
   }
 
   nextPage(){

@@ -9,9 +9,15 @@
     (keyup)="onSearchPokemon(txtSearch.value)"
  />
 
+<button class="btn btn-primary" (click)="ngOnInit()" >Reset</button>
+&nbsp; 
 <button class="btn btn-primary" (click)="previousPage()" >Anteriores</button>
 &nbsp; 
 <button class="btn btn-primary" (click)="nextPage()" [disabled] = "(pokemons | filtro:page:search).length === 0">Siguientes</button>
+&nbsp; 
+<button class="btn btn-primary" (click)="orderAZ()" >A - Z</button>
+&nbsp; 
+<button class="btn btn-primary" (click)="orderZA()" >Z - A</button>
 
 
 <table class="table">

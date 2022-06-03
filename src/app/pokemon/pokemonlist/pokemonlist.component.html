@@ -1,9 +1,17 @@
 <h1 class="mt-5">Pokemons</h1>
 <hr>
 
+<input
+    type="text"
+    placeholder="Buscar pokemon"
+    class="form-control mb-2 "
+    #txtSearch
+    (keyup)="onSearchPokemon(txtSearch.value)"
+ />
+
 <button class="btn btn-primary" (click)="previousPage()" >Anteriores</button>
 &nbsp; 
-<button class="btn btn-primary" (click)="nextPage()">Siguientes</button>
+<button class="btn btn-primary" (click)="nextPage()" [disabled] = "(pokemons | filtro:page:search).length === 0">Siguientes</button>
 
 
 <table class="table">
@@ -15,11 +23,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page">
+        <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page:search">
             <td [ngStyle]="{'width' : '100px'}">{{pokemon.id}}</td>
-            <td [ngStyle]="{'width' : '150px'}">{{pokemon.name}}</td>
+            <td [ngStyle]="{'width' : '200px'}">{{pokemon.name}}</td>
             <td>
-                <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '70px'}" />
+                <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
             </td>
         </tr>
     </tbody>

@@ -11,6 +11,8 @@ export class PokemonlistComponent implements OnInit {
 
   public pokemons: Pokemon[] = []
   public page: number = 0;
+  search : string = "";
+
 
   constructor(
    private pokemonService : PokemonService
@@ -21,6 +23,11 @@ export class PokemonlistComponent implements OnInit {
       .subscribe(resp => {
         this.pokemons = resp
       })
+  }
+
+  onSearchPokemon(search : string){
+    this.page = 0;
+    this.search = search;
   }
 
   nextPage(){

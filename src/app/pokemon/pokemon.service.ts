@@ -21,13 +21,14 @@ export class PokemonService {
       )
   }
 
+
   private transformSmallPokemonIntoPokemon(resp : FetchAllPokemonResponse) {
     
     const pokemonList: Pokemon[] = resp.results.map(poke => {
 
       const urlArr = poke.url.split('/')
       const id = urlArr[6]
-      const pic = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+      const pic = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
       return {
         id,
         name: poke.name,

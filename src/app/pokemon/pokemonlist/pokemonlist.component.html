@@ -19,22 +19,29 @@
 &nbsp; 
 <button class="btn btn-primary" (click)="orderZA()" >Z - A</button>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page:search">
+                
+                    <td [ngStyle]="{'width' : '100px'}">
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>
+                    </td>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Imagen</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page:search">
-            <td [ngStyle]="{'width' : '100px'}">{{pokemon.id}}</td>
-            <td [ngStyle]="{'width' : '200px'}">{{pokemon.name}}</td>
-            <td>
-                <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
-            </td>
-        </tr>
-    </tbody>
-</table>
+                    <td [ngStyle]="{'width' : '200px'}">
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">{{pokemon.name}}</a>
+                    </td>
+                    <td>
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">
+                            <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
+                        </a>
+                    </td>
+            </tr>
+        </tbody>
+    </table>

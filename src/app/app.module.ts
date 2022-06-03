@@ -3,18 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PokemonModule } from './pokemon/pokemon.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PokemonlistComponent } from './pokemon/pokemonlist/pokemonlist.component';
+import { FiltroPipe } from './pokemon/filtro.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PokemonlistComponent,
+    FiltroPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PokemonModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonlistComponent } from './pokemon/pokemonlist/pokemonlist.component';
 import { FiltroPipe } from './pokemon/filtro.pipe';
+import { PokemondetailComponent } from './pokemon/pokemondetail/pokemondetail/pokemondetail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonlistComponent,
-    FiltroPipe
+    FiltroPipe,
+    PokemondetailComponent
   ],
   imports: [
     BrowserModule,

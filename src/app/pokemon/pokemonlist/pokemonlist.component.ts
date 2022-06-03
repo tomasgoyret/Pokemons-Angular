@@ -34,6 +34,7 @@ export class PokemonlistComponent implements OnInit {
   }
 
   orderAZ(){
+    this.page = 0;
     this.pokemonService.getAllPokemons()
       .subscribe( resp => {
         const orderedPokemons = resp.sort(function (a, b) {
@@ -50,6 +51,7 @@ export class PokemonlistComponent implements OnInit {
       )
   }
   orderZA(){
+    this.page = 0;
     this.pokemonService.getAllPokemons()
       .subscribe( resp => {
         const orderedPokemons = resp.sort(function (a, b) {

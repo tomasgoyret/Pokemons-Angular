@@ -30,12 +30,12 @@
         <tbody>
             <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page:search">
                 
-                    <td [ngStyle]="{'width' : '100px'}">
+                    <td [ngStyle]="{'width' : '200px'}">
                         <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>
                     </td>
 
-                    <td [ngStyle]="{'width' : '200px'}">
-                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">{{pokemon.name}}</a>
+                    <td [ngStyle]="{'width' : '250px'}">
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">{{pokemon.name}}</a>
                     </td>
                     <td>
                         <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">

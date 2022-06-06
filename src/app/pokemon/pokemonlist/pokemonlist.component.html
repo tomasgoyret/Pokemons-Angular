@@ -20,7 +20,7 @@
 <button class="btn btn-primary" (click)="orderZA()" >Z - A</button>
 &nbsp; 
 <select class="form-select">
-    <option *ngFor="let tipo of types" value="{{tipo}}" #filter (click)="filterByType(filter.value)">{{tipo}}</option>
+    <option *ngFor="let tipo of types" value="{{tipo}}" #filter ng-change="filterByType(filter.value)">{{tipo}}</option>
 </select>
 
     <table class="table">

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable, pipe, switchMap } from 'rxjs';
 import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail, PokemonsWithTypes } from './pokemonlist/pokemon.interfaces';
 
 @Injectable({
@@ -28,6 +28,14 @@ export class PokemonService {
       )
   }
 
+  getTypes() : Observable<string[]> {
+    return this.http.get<FetchAllPokemonResponse>(`${this.url}/type`)
+      .pipe(
+        map(this.transformPokemonTaypesResponseIntoPokemonType)
+      )
+
+  }
+
   private transformSmallPokemonIntoPokemon(resp: FetchAllPokemonResponse) {
 
     const pokemonList: Pokemon[] = resp.results.map(poke => {
@@ -43,6 +51,13 @@ export class PokemonService {
       }
     })
     return pokemonList
+  }
+
+  private transformPokemonTaypesResponseIntoPokemonType(resp: FetchAllPokemonResponse) {
+    const types: string[] = resp.results.map( poke => {
+      return poke.name
+    })
+    return types
   }
 
   private transformPokemonDetailResponseIntoPokemonDetail(resp: FetchPokemonDetail) {

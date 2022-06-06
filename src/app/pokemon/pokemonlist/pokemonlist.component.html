@@ -18,6 +18,10 @@
 <button class="btn btn-primary" (click)="orderAZ()" >A - Z</button>
 &nbsp; 
 <button class="btn btn-primary" (click)="orderZA()" >Z - A</button>
+&nbsp; 
+<select class="form-select">
+    <option *ngFor="let tipo of types" value="{{tipo}}" #filter (click)="filterByType(filter.value)">{{tipo}}</option>
+</select>
 
     <table class="table">
         <thead>

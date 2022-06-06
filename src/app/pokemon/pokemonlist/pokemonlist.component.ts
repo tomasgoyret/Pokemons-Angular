@@ -12,12 +12,12 @@ export class PokemonlistComponent implements OnInit {
   public pokemons: Pokemon[] = []
   public page: number = 0;
   search: string = "";
-  public urls : string[] = ["prueba"]
+  public types: string[] = ["cargando..."]
 
 
   constructor(
     private pokemonService: PokemonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.page = 0;
@@ -28,6 +28,10 @@ export class PokemonlistComponent implements OnInit {
         this.pokemons = resp
         this.getAllPokemonsWithTipes()
       })
+    this.pokemonService.getTypes()
+      .subscribe(resp => {
+        this.types = resp
+      })
   }
 
   onSearchPokemon(search: string) {
@@ -35,15 +39,20 @@ export class PokemonlistComponent implements OnInit {
     this.search = search;
   }
 
+  filterByType(tipo : string){
+    const filteredPokemon = this.pokemons.filter( p => p.tipos.includes(tipo))
+    this.pokemons = filteredPokemon;
+  }
+
   getAllPokemonsWithTipes() {
-    const pokemonsWithTypes = this.pokemons.map((p) : Pokemon => {
+    const pokemonsWithTypes = this.pokemons.map((p): Pokemon => {
       this.pokemonService.getPokemonDetail(parseInt(p.id))
-        .subscribe( resp => {
+        .subscribe(resp => {
           p.tipos = resp.types
         })
       return p
     })
-   this.pokemons = pokemonsWithTypes   
+    this.pokemons = pokemonsWithTypes
   }
 
   orderAZ() {
@@ -83,10 +92,10 @@ export class PokemonlistComponent implements OnInit {
   }
 
   nextPage() {
-    this.page += 5
+    this.page += 4
   }
   previousPage() {
-    this.page -= 5
+    this.page -= 4
   }
 
 }

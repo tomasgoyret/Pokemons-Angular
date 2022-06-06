@@ -14,6 +14,7 @@ export interface Pokemon {
     id: string;
     name: string;
     pic: string;
+    tipos: string[];
 }
 
 export interface FetchPokemonDetail {
@@ -42,6 +43,13 @@ export interface PokemonDetail {
     name: string;
     pic: string;
     stats: Stats[];
+    types: string[];
+}
+export interface PokemonsWithTypes {
+    id: number;
+    name: string;
+    pic: string;
+    stats: any[];
     types: string[];
 }
 

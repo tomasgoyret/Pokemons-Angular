@@ -25,6 +25,7 @@
                 <th>#</th>
                 <th>Nombre</th>
                 <th>Imagen</th>
+                <th>Tipo</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +42,9 @@
                         <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">
                             <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
                         </a>
+                    </td>
+                    <td>
+                        <p *ngFor="let poke of pokemon.tipos">{{poke}}</p>
                     </td>
             </tr>
         </tbody>

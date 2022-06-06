@@ -11,12 +11,13 @@ export class PokemonlistComponent implements OnInit {
 
   public pokemons: Pokemon[] = []
   public page: number = 0;
-  search : string = "";
+  search: string = "";
+  public urls : string[] = ["prueba"]
 
 
   constructor(
-   private pokemonService : PokemonService
-  ) { }
+    private pokemonService: PokemonService
+  ) {}
 
   ngOnInit(): void {
     this.page = 0;
@@ -25,18 +26,30 @@ export class PokemonlistComponent implements OnInit {
     this.pokemonService.getAllPokemons()
       .subscribe(resp => {
         this.pokemons = resp
+        this.getAllPokemonsWithTipes()
       })
   }
 
-  onSearchPokemon(search : string){
+  onSearchPokemon(search: string) {
     this.page = 0;
     this.search = search;
   }
 
-  orderAZ(){
+  getAllPokemonsWithTipes() {
+    const pokemonsWithTypes = this.pokemons.map((p) : Pokemon => {
+      this.pokemonService.getPokemonDetail(parseInt(p.id))
+        .subscribe( resp => {
+          p.tipos = resp.types
+        })
+      return p
+    })
+   this.pokemons = pokemonsWithTypes   
+  }
+
+  orderAZ() {
     this.page = 0;
     this.pokemonService.getAllPokemons()
-      .subscribe( resp => {
+      .subscribe(resp => {
         const orderedPokemons = resp.sort(function (a, b) {
           if (a.name > b.name) {
             return 1;
@@ -50,11 +63,11 @@ export class PokemonlistComponent implements OnInit {
       }
       )
   }
-  orderZA(){
+  orderZA() {
     this.page = 0;
     this.search = "";
     this.pokemonService.getAllPokemons()
-      .subscribe( resp => {
+      .subscribe(resp => {
         const orderedPokemons = resp.sort(function (a, b) {
           if (a.name > b.name) {
             return -1;
@@ -69,10 +82,10 @@ export class PokemonlistComponent implements OnInit {
       )
   }
 
-  nextPage(){
+  nextPage() {
     this.page += 5
   }
-  previousPage(){
+  previousPage() {
     this.page -= 5
   }
 

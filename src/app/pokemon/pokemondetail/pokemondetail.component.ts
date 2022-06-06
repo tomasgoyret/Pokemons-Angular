@@ -12,33 +12,42 @@ import { Location } from '@angular/common';
 export class PokemondetailComponent implements OnInit {
 
   public loaded = false;
-  public pokemonDetail: PokemonDetail = {
+  public pokemonDetail : PokemonDetail = {
     id: 0,
     name: "",
     pic: "",
     stats: [],
     types: []
   };
-  
+
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
     private location: Location
-    ) { }
-    
-    ngOnInit(): void {
-      const id = Number(this.route.snapshot.paramMap.get("id"))
-      this.pokemonService.getPokemonDetail(id)
-        .subscribe((p) => {
-          console.log(p, "subscribe")
-          this.pokemonDetail = p
-          this.loaded = true;
-      })      
-    }
+  ) {}
+
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+    this.pokemonService.getPokemonDetail(id)
+      .subscribe((p) => {
+        this.pokemonDetail = p
+        this.loaded = true;
+      })
+  }
+
+  getPokemonDetail() {
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+    this.pokemonService.getPokemonDetail(id)
+      .subscribe((p) => {
+        console.log(p, "subscribe")
+        this.pokemonDetail = p
+        this.loaded = true;
+      })
+    };
 
     goBack(){
-      this.location.back();
-    }
+        this.location.back();
+      }
     
 }
 

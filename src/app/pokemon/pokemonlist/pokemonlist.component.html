@@ -19,8 +19,12 @@
 &nbsp; 
 <button class="btn btn-primary" (click)="orderZA()" >Z - A</button>
 &nbsp; 
-<select class="form-select">
-    <option *ngFor="let tipo of types" value="{{tipo}}" #filter ng-change="filterByType(filter.value)">{{tipo}}</option>
+<button class="btn btn-primary" (click)="orderbyStronger()" >Más Fuerte</button>
+&nbsp; 
+<button class="btn btn-primary" (click)="orderbyWeaker()" >Más Débil</button>
+&nbsp; 
+<select class="form-select" #mySelect (change)="filterByType(mySelect.value)">
+    <option *ngFor="let tipo of types" [value]="tipo">{{tipo}}</option>
 </select>
 
     <table class="table">
@@ -30,6 +34,7 @@
                 <th>Nombre</th>
                 <th>Imagen</th>
                 <th>Tipo</th>
+                <th>Ataque</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +54,9 @@
                     </td>
                     <td>
                         <p *ngFor="let poke of pokemon.tipos">{{poke}}</p>
+                    </td>
+                    <td>
+                        <p *ngIf="pokemon.stats">{{pokemon.stats[1].points}}</p>
                     </td>
             </tr>
         </tbody>

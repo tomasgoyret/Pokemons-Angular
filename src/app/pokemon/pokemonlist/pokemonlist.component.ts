@@ -10,6 +10,7 @@ import { Pokemon } from './pokemon.interfaces';
 export class PokemonlistComponent implements OnInit {
 
   public pokemons: Pokemon[] = []
+  public pokemons2: Pokemon[] = []
   public page: number = 0;
   search: string = "";
   public types: string[] = ["cargando..."]
@@ -26,6 +27,7 @@ export class PokemonlistComponent implements OnInit {
     this.pokemonService.getAllPokemons()
       .subscribe(resp => {
         this.pokemons = resp
+        this.pokemons2 = resp
         this.getAllPokemonsWithTipes()
       })
     this.pokemonService.getTypes()
@@ -39,8 +41,8 @@ export class PokemonlistComponent implements OnInit {
     this.search = search;
   }
 
-  filterByType(tipo : string){
-    const filteredPokemon = this.pokemons.filter( p => p.tipos.includes(tipo))
+  filterByType(tipo: string) {
+    let filteredPokemon = this.pokemons2.filter(p => p.tipos.includes(tipo))
     this.pokemons = filteredPokemon;
   }
 
@@ -49,46 +51,82 @@ export class PokemonlistComponent implements OnInit {
       this.pokemonService.getPokemonDetail(parseInt(p.id))
         .subscribe(resp => {
           p.tipos = resp.types
+          p.stats = resp.stats
+          if(!resp.stats){
+            console.log(resp, "no tiene stats")
+          }
         })
       return p
     })
     this.pokemons = pokemonsWithTypes
+    this.pokemons2 = pokemonsWithTypes
   }
 
   orderAZ() {
     this.page = 0;
-    this.pokemonService.getAllPokemons()
-      .subscribe(resp => {
-        const orderedPokemons = resp.sort(function (a, b) {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (a.name < b.name) {
-            return -1;
-          }
-          return 0;
-        });
-        this.pokemons = orderedPokemons;
+    this.search = "";
+    this.getAllPokemonsWithTipes()
+    const orderedPokemons = this.pokemons.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
       }
-      )
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+    this.pokemons = orderedPokemons;
   }
   orderZA() {
     this.page = 0;
     this.search = "";
-    this.pokemonService.getAllPokemons()
-      .subscribe(resp => {
-        const orderedPokemons = resp.sort(function (a, b) {
-          if (a.name > b.name) {
-            return -1;
-          }
-          if (a.name < b.name) {
-            return 1;
-          }
-          return 0;
-        });
-        this.pokemons = orderedPokemons;
+    this.getAllPokemonsWithTipes()
+    const orderedPokemons = this.pokemons.sort(function (a, b) {
+      if (a.name > b.name) {
+        return -1;
       }
-      )
+      if (a.name < b.name) {
+        return 1;
+      }
+      return 0;
+    });
+    this.pokemons = orderedPokemons;
+  }
+
+  orderbyWeaker() {
+    console.log("entro")
+    this.page = 0;
+    this.search = "";
+    this.getAllPokemonsWithTipes()
+    const orderedPokemonsByStrength = this.pokemons.sort(function (a, b) {
+      if (a.stats[1].points > b.stats[1].points) {
+        return 1;
+      }
+      if (a.stats[1].points < b.stats[1].points) {
+        return -1;
+      }
+      return 0;
+    });
+    this.pokemons = orderedPokemonsByStrength;
+    console.log(this.pokemons)
+
+  }
+  
+
+  orderbyStronger() {
+    this.page = 0;
+    this.search = "";
+    this.getAllPokemonsWithTipes()
+    const orderedPokemonsByStrength = this.pokemons.sort(function (a, b) {
+      if (a.stats[1].points > b.stats[1].points) {
+        return -1;
+      }
+      if (a.stats[1].points < b.stats[1].points) {
+        return 1;
+      }
+      return 0;
+    });
+    this.pokemons = orderedPokemonsByStrength;
   }
 
   nextPage() {

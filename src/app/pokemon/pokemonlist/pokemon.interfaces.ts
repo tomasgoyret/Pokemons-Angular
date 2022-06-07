@@ -15,6 +15,7 @@ export interface Pokemon {
     name: string;
     pic: string;
     tipos: string[];
+    stats: Stats[];
 }
 
 export interface FetchPokemonDetail {

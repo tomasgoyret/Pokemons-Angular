@@ -47,7 +47,8 @@ export class PokemonService {
         id,
         name: poke.name,
         pic,
-        tipos: ["default"]
+        tipos: ["default"],
+        stats: [{name: "cargando", points: 0}]
       }
     })
     return pokemonList

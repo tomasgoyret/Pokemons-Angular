@@ -15,18 +15,21 @@
 &nbsp; 
 <button class="btn btn-primary" (click)="nextPage()" [disabled] = "(pokemons | filtro:page:search).length === 0">Siguientes</button>
 &nbsp; 
-<button class="btn btn-primary" (click)="orderAZ()" >A - Z</button>
+<button class="btn btn-primary" (click)="orderAZ()">A - Z</button>
 &nbsp; 
-<button class="btn btn-primary" (click)="orderZA()" >Z - A</button>
+<button class="btn btn-primary" (click)="orderZA()">Z - A</button>
 &nbsp; 
 <button class="btn btn-primary" (click)="orderbyStronger()" >Más Fuerte</button>
 &nbsp; 
 <button class="btn btn-primary" (click)="orderbyWeaker()" >Más Débil</button>
 &nbsp; 
+<button class="btn btn-primary" (click)="orderbyWeaker()" > <a [ngStyle]="{'color' : 'white', 'text-decoration' : 'none'}" href="/new" > Crear un pokemon </a></button>
+
 <select [ngStyle]="{'margin' : '30px 0px'}" class="form-select" #mySelect (change)="filterByType(mySelect.value)">
     <option value="limpiar">Todos</option>
     <option *ngFor="let tipo of types" [value]="tipo">{{tipo}}</option>
 </select>
+
 
     <table class="table">
         <thead>
@@ -42,14 +45,14 @@
             <tr  [ngStyle]="{'height' : '100px'}" *ngFor="let pokemon of pokemons | filtro:page:search">
                 
                     <td [ngStyle]="{'width' : '200px'}">
-                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>
                     </td>
 
                     <td [ngStyle]="{'width' : '250px'}">
                         <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">{{pokemon.name}}</a>
                     </td>
                     <td>
-                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}"href="/pokemon/{{pokemon.id}}">
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">
                             <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
                         </a>
                     </td>

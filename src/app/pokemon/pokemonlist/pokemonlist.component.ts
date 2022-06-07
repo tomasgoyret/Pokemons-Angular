@@ -98,7 +98,6 @@ export class PokemonlistComponent implements OnInit {
   }
 
   orderbyWeaker() {
-    console.log("entro")
     this.page = 0;
     this.search = "";
     this.getAllPokemonsWithTipes()
@@ -112,8 +111,6 @@ export class PokemonlistComponent implements OnInit {
       return 0;
     });
     this.pokemons = orderedPokemonsByStrength;
-    console.log(this.pokemons)
-
   }
   
 

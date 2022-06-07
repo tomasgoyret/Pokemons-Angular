@@ -24,6 +24,7 @@
 <button class="btn btn-primary" (click)="orderbyWeaker()" >Más Débil</button>
 &nbsp; 
 <select class="form-select" #mySelect (change)="filterByType(mySelect.value)">
+    <option value="limpiar">Todos</option>
     <option *ngFor="let tipo of types" [value]="tipo">{{tipo}}</option>
 </select>
 

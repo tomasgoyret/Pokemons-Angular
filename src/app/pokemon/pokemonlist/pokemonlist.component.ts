@@ -42,8 +42,12 @@ export class PokemonlistComponent implements OnInit {
   }
 
   filterByType(tipo: string) {
-    let filteredPokemon = this.pokemons2.filter(p => p.tipos.includes(tipo))
-    this.pokemons = filteredPokemon;
+    if(tipo != "limpiar"){
+      let filteredPokemon = this.pokemons2.filter(p => p.tipos.includes(tipo))
+      this.pokemons = filteredPokemon;
+    } else {
+      this.pokemons = this.pokemons2
+    }
   }
 
   getAllPokemonsWithTipes() {

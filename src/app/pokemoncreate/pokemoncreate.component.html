@@ -1,27 +1,63 @@
 <h1 class="mt-5">Nuevo Pokemon</h1>
 <hr>
 
+
+<button class="btn btn-primary" (click)="goBack()">Volver</button>
+<br>
+
 <div class="form-floating" [ngStyle]="{'margin' : '30px 0px'}">
-    <input class="form-control" type="text" placeholder="Nombre" id="floatingTextarea"/>
+    <input class="form-control" type="text" placeholder="Nombre" id="floatingTextarea" />
     <label for="floatingTextarea">Nombre</label>
 </div>
 
-<label for="basic-url" class="form-label">Url  Foto </label>
+<label for="basic-url" class="form-label">Url Foto </label>
 <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 </div>
 
-<label [ngStyle]="{'margin' : '30px 0px 10px 0px'}">Tipo :  </label>
-<select  class="form-select" #mySelect (change)="(mySelect.value)">
+<label [ngStyle]="{'margin' : '30px 0px 10px 0px'}">Tipo : </label>
+<select class="form-select" #mySelect (change)="(mySelect.value)">
     <option *ngFor="let tipo of types" [value]="tipo">{{tipo}}</option>
 </select>
 
-<div class="form-floating" [ngStyle]="{'margin' : '50px'}">
-    <input class="form-control" type="text" placeholder="Nombre" id="floatingTextarea"/>
-    <label for="floatingTextarea">Nombre</label>
-</div>
-<div class="form-floating" [ngStyle]="{'margin' : '50px'}">
-    <input class="form-control" type="text" placeholder="Nombre" id="floatingTextarea"/>
-    <label for="floatingTextarea">Nombre</label>
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col">
+            <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
+                <input class="form-control" type="number" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">hp</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
+                <input class="form-control" type="number" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">attack</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
+                <input class="form-control" type="number" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">special-attack	</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
+                <input class="form-control" type="number" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">special-defense	</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
+                <input class="form-control" type="number" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">speed</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
+                <input class="form-control" type="number" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">Nombre</label>
+            </div>
+        </div>
+    </div>
 </div>

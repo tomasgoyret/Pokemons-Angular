@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon/pokemon.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pokemoncreate',
@@ -12,7 +13,8 @@ export class PokemoncreateComponent implements OnInit {
 
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class PokemoncreateComponent implements OnInit {
       .subscribe(resp => {
         this.types = resp
       })
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 }

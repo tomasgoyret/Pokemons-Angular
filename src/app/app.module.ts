@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokemonlistComponent } from './pokemon/pokemonlist/pokemonlist.component';
 import { FiltroPipe } from './pokemon/filtro.pipe';
 import { PokemondetailComponent } from './pokemon/pokemondetail/pokemondetail.component';
-import { PokemoncreateComponent } from './pokemoncreate/pokemoncreate.component';
+import { PokemoncreateComponent } from './pokemon/pokemoncreate/pokemoncreate.component';
 
 @NgModule({
   declarations: [

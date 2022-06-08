@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, pipe, switchMap } from 'rxjs';
-import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail, PokemonsWithTypes } from './pokemonlist/pokemon.interfaces';
+import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail, PokemonsWithTypes } from './pokemon.interfaces';
 
 @Injectable({
   providedIn: 'root'

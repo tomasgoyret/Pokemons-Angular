@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
-import { PokemonDetail } from '../pokemonlist/pokemon.interfaces';
+import { PokemonDetail } from '../pokemon.interfaces';
 import { Location } from '@angular/common';
 
 @Component({
@@ -39,7 +39,6 @@ export class PokemondetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get("id"))
     this.pokemonService.getPokemonDetail(id)
       .subscribe((p) => {
-        console.log(p, "subscribe")
         this.pokemonDetail = p
         this.loaded = true;
       })

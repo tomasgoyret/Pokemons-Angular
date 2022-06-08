@@ -1,6 +1,7 @@
-import { Component, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Injectable, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon.interfaces';
+
 
 @Component({
   selector: 'app-pokemonlist',
@@ -17,7 +18,7 @@ export class PokemonlistComponent implements OnInit {
 
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +30,6 @@ export class PokemonlistComponent implements OnInit {
         this.pokemons = resp
         this.pokemons2 = resp
         this.getAllPokemonsWithTipes()
-        this.pokemons2 = [...this.pokemonService.getCreatedPokemons(),...this.pokemons,]
-      this.pokemons = this.pokemons2
-      console.log(this.pokemons)
       })
     this.pokemonService.getTypes()
       .subscribe(resp => {
@@ -64,6 +62,7 @@ export class PokemonlistComponent implements OnInit {
     })
     this.pokemons = pokemonsWithTypes
     this.pokemons2 = pokemonsWithTypes
+    
   }
 
   orderAZ() {

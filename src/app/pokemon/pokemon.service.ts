@@ -10,7 +10,7 @@ export class PokemonService {
 
   private url: string = "https://pokeapi.co/api/v2"
   public newPokemons: Pokemon[] = [{
-    id: "15501",
+    id: Math.random().toString(),
     name: "NuevoPokemon",
     pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
     tipos: ["electric", "unknown"],
@@ -25,7 +25,6 @@ export class PokemonService {
     return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
       .pipe(
         map(this.transformSmallPokemonIntoPokemon),
-        tap( r => [...this.newPokemons,...r])        
       )
   }
 
@@ -47,6 +46,12 @@ export class PokemonService {
         map(this.transformPokemonTaypesResponseIntoPokemonType),
       )
 
+  }
+
+  addPokemon(nuevo: Pokemon) {
+    nuevo.id = Math.random().toString();
+    this.newPokemons.unshift(nuevo)
+    console.log(this.newPokemons)
   }
 
   private transformSmallPokemonIntoPokemon(resp: FetchAllPokemonResponse) : Pokemon[] {

@@ -1,21 +1,39 @@
 <h1 class="mt-5">Nuevo Pokemon</h1>
 <hr>
-<h4>{{newPokemon.name}}</h4>
-<h4>{{newPokemon.pic}}</h4>
-<h4>{{newPokemon.stats[0].name}} : {{newPokemon.stats[0].points}}</h4>
-<h4>{{newPokemon.stats[1].name}} : {{newPokemon.stats[1].points}}</h4>
-<h4>{{newPokemon.stats[2].name}} : {{newPokemon.stats[2].points}}</h4>
-<h4>{{newPokemon.stats[3].name}} : {{newPokemon.stats[3].points}}</h4>
-<h4>{{newPokemon.stats[4].name}} : {{newPokemon.stats[4].points}}</h4>
-<h4>{{newPokemon.stats[5].name}} : {{newPokemon.stats[5].points}}</h4>
-<h4 *ngFor="let tipos of newPokemon.tipos">{{tipos}}</h4>
-
-
 <button class="btn btn-primary" (click)="goBack()">Volver</button>
 <br>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Tipo</th>
+            <th>Ataque</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h6>{{newPokemon.name}}</h6>
+            </td>
+            <td>
+                <img src="{{newPokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
+            </td>
+            <td>
+                <h6 *ngFor="let tipos of newPokemon.tipos">{{tipos}}</h6>
+            </td>
+            <td>
+                <h6>{{newPokemon.stats[1].points}}</h6>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
 <div class="form-floating" [ngStyle]="{'margin' : '30px 0px'}">
-    <input class="form-control" [(ngModel)]="newPokemon.name"  type="text" placeholder="Nombre" id="floatingTextarea" />
+    <input class="form-control" [(ngModel)]="newPokemon.name" type="text" placeholder="Nombre" id="floatingTextarea" />
     <label for="floatingTextarea">Nombre</label>
 </div>
 
@@ -34,37 +52,43 @@
     <div class="row row-cols-2">
         <div class="col">
             <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
-                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[0].points" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[0].points" min="0"
+                    placeholder="Nombre" id="floatingTextarea" />
                 <label for="floatingTextarea">hp</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
-                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[1].points" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[1].points" min="0"
+                    placeholder="Nombre" id="floatingTextarea" />
                 <label for="floatingTextarea">attack</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
-                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[2].points" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[2].points" min="0"
+                    placeholder="Nombre" id="floatingTextarea" />
                 <label for="floatingTextarea">defense</label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
-                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[3].points" min="0" placeholder="Nombre" id="floatingTextarea" />
-                <label for="floatingTextarea">special-attack	</label>
+                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[3].points" min="0"
+                    placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">special-attack </label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
-                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[4].points" min="0" placeholder="Nombre" id="floatingTextarea" />
-                <label for="floatingTextarea">special-defense	</label>
+                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[4].points" min="0"
+                    placeholder="Nombre" id="floatingTextarea" />
+                <label for="floatingTextarea">special-defense </label>
             </div>
         </div>
         <div class="col">
             <div class="form-floating" [ngStyle]="{'margin' : '50px 10px 10px'}">
-                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[5].points" min="0" placeholder="Nombre" id="floatingTextarea" />
+                <input class="form-control" type="number" [(ngModel)]="newPokemon.stats[5].points" min="0"
+                    placeholder="Nombre" id="floatingTextarea" />
                 <label for="floatingTextarea">speed</label>
             </div>
         </div>
@@ -72,6 +96,7 @@
 </div>
 
 <div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-outline-success" (click)="alerta()" [ngStyle]="{'margin' : '50px 0px 0px'}" type="button">Crear Pokemon</button>
-  </div>
+    <button class="btn btn-outline-success" (click)="alerta()" [ngStyle]="{'margin' : '50px 0px 0px'}"
+        type="button">Crear Pokemon</button>
+</div>
 <br>

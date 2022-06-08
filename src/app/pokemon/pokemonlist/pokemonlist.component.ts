@@ -21,7 +21,6 @@ export class PokemonlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.page = 0;
     this.search = "";
     this.pokemons = [];
     this.pokemonService.getAllPokemons()

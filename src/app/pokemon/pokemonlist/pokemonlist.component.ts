@@ -21,6 +21,7 @@ export class PokemonlistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.page = 0;
     this.search = "";
     this.pokemons = [];
     this.pokemonService.getAllPokemons()
@@ -28,6 +29,9 @@ export class PokemonlistComponent implements OnInit {
         this.pokemons = resp
         this.pokemons2 = resp
         this.getAllPokemonsWithTipes()
+        this.pokemons2 = [...this.pokemonService.getCreatedPokemons(),...this.pokemons,]
+      this.pokemons = this.pokemons2
+      console.log(this.pokemons)
       })
     this.pokemonService.getTypes()
       .subscribe(resp => {
@@ -54,10 +58,7 @@ export class PokemonlistComponent implements OnInit {
       this.pokemonService.getPokemonDetail(parseInt(p.id))
         .subscribe(resp => {
           p.tipos = resp.types
-          p.stats = resp.stats
-          if(!resp.stats){
-            console.log(resp, "no tiene stats")
-          }
+          p.stats = resp.stats 
         })
       return p
     })

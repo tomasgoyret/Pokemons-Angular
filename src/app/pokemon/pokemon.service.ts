@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, pipe, switchMap } from 'rxjs';
+import { concat, concatWith, map, mergeWith, Observable, pipe, switchMap, tap } from 'rxjs';
 import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail, PokemonsWithTypes } from './pokemon.interfaces';
 
 @Injectable({
@@ -9,6 +9,13 @@ import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail, Po
 export class PokemonService {
 
   private url: string = "https://pokeapi.co/api/v2"
+  public newPokemons: Pokemon[] = [{
+    id: "15501",
+    name: "NuevoPokemon",
+    pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
+    tipos: ["electric", "unknown"],
+    stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
+  }];
 
   constructor(
     private http: HttpClient
@@ -18,10 +25,16 @@ export class PokemonService {
     return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
       .pipe(
         map(this.transformSmallPokemonIntoPokemon),
+        tap( r => [...this.newPokemons,...r])        
       )
   }
 
+  getCreatedPokemons():Pokemon[] {
+    return this.newPokemons
+  }
+
   getPokemonDetail(id: number): Observable<PokemonDetail> {
+    
     return this.http.get<FetchPokemonDetail>(`${this.url}/pokemon/${id}`)
       .pipe(
         map(this.transformPokemonDetailResponseIntoPokemonDetail)
@@ -31,12 +44,12 @@ export class PokemonService {
   getTypes() : Observable<string[]> {
     return this.http.get<FetchAllPokemonResponse>(`${this.url}/type`)
       .pipe(
-        map(this.transformPokemonTaypesResponseIntoPokemonType)
+        map(this.transformPokemonTaypesResponseIntoPokemonType),
       )
 
   }
 
-  private transformSmallPokemonIntoPokemon(resp: FetchAllPokemonResponse) {
+  private transformSmallPokemonIntoPokemon(resp: FetchAllPokemonResponse) : Pokemon[] {
 
     const pokemonList: Pokemon[] = resp.results.map(poke => {
 

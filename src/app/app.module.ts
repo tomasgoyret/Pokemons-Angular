@@ -9,6 +9,8 @@ import { PokemonlistComponent } from './pokemon/pokemonlist/pokemonlist.componen
 import { FiltroPipe } from './pokemon/filtro.pipe';
 import { PokemondetailComponent } from './pokemon/pokemondetail/pokemondetail.component';
 import { PokemoncreateComponent } from './pokemon/pokemoncreate/pokemoncreate.component';
+import {ButtonModule} from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { PokemoncreateComponent } from './pokemon/pokemoncreate/pokemoncreate.co
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

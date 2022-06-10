@@ -10,6 +10,7 @@ import { FiltroPipe } from './pokemon/filtro.pipe';
 import { PokemondetailComponent } from './pokemon/pokemondetail/pokemondetail.component';
 import { PokemoncreateComponent } from './pokemon/pokemoncreate/pokemoncreate.component';
 import {ButtonModule} from 'primeng/button';
+import { ColorBackgroundPipe } from './pokemon/color.pipe';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {ButtonModule} from 'primeng/button';
     AppComponent,
     PokemonlistComponent,
     FiltroPipe,
+    ColorBackgroundPipe,
     PokemondetailComponent,
     PokemoncreateComponent
   ],

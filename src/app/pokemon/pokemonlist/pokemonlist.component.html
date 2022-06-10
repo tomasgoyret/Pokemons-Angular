@@ -57,7 +57,7 @@
                         </a>
                     </td>
                     <td>
-                        <p *ngFor="let poke of pokemon.tipos">{{poke}}</p>
+                        <p *ngFor="let poke of pokemon.tipos" [ngStyle] = "{'background-color': poke | colorBackground}">{{poke}}</p>
                     </td>
                     <td>
                         <p *ngIf="pokemon.stats">{{pokemon.stats[1].points}}</p>

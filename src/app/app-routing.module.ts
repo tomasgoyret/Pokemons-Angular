@@ -7,7 +7,7 @@ import { PokemoncreateComponent } from './pokemon/pokemoncreate/pokemoncreate.co
 const routes: Routes = [
   {path:"pokemon/:id", component: PokemondetailComponent},
   {path:"", component: PokemonlistComponent},
-  //{path:"new", component: PokemoncreateComponent},
+  {path:"new", component: PokemoncreateComponent},
 ];
 
 @NgModule({

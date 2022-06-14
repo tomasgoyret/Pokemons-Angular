@@ -8,7 +8,6 @@ export class ColorBackgroundPipe implements PipeTransform {
 
   transform(poke: string): string {
 
-    console.log(poke)
 
     if(poke == "water") {
       return "blue"

@@ -1,4 +1,4 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Location } from '@angular/common';
 import { Pokemon } from '../pokemon.interfaces';
@@ -13,7 +13,7 @@ import { PokemonlistComponent } from '../pokemonlist/pokemonlist.component';
 export class PokemoncreateComponent implements OnInit {
 
   public types: string[] = ["cargando..."]
-  @Input() newPokemon: Pokemon = {
+  newPokemon: Pokemon = {
     id: '',
     name: "",
     pic: "",
@@ -41,12 +41,12 @@ export class PokemoncreateComponent implements OnInit {
     ]
   }
 
-  public nuevoPokemon : Pokemon[] = [];
+  //public nuevoPokemon : Pokemon[] = [];
 
   constructor(
     private pokemonService: PokemonService,
     private location: Location,
-    private pokemonList: PokemonlistComponent
+    //private pokemonList: PokemonlistComponent
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +71,33 @@ export class PokemoncreateComponent implements OnInit {
 
   addPokemon(){
     this.newPokemon.id = Math.random().toString();
-    this.pokemonList.pokemons2.unshift(this.newPokemon)
-    this.pokemonList.pokemons.unshift(this.newPokemon)
+    this.pokemonService.addPokemon(this.newPokemon)
+    this.newPokemon = {
+      id: '',
+      name: "",
+      pic: "",
+      tipos: [],
+      stats: [{
+        name: "hp",
+        points: 0
+      }, {
+        name: "attack",
+        points: 0
+      }, {
+        name: "defense",
+        points: 0
+      }, {
+        name: "special-attack",
+        points: 0
+      }, {
+        name: "special-defense",
+        points: 0
+      },
+      {
+        name: "speed",
+        points: 0
+      },
+      ]
+    }
   }
 }

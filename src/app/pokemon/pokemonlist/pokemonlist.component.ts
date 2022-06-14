@@ -16,6 +16,10 @@ export class PokemonlistComponent implements OnInit {
   search: string = "";
   public types: string[] = ["cargando..."]
 
+  get pokemons3 () : Pokemon[] {
+    return [...this.pokemonService.newPokemons,...this.pokemons]
+  }
+
 
   constructor(
     private pokemonService: PokemonService,

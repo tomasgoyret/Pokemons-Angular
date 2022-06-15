@@ -65,7 +65,7 @@
                         <!-- <span class="badge" [ngClass]= "poke | colorBackground" *ngFor="let poke of pokemon.tipos">{{poke}}</span> -->
 
 
-                        <p-tag [ngStyle] = "{'margin' : '10px'}" [styleClass]= "poke | colorBackground" value="{{poke}}" *ngFor="let poke of pokemon.tipos"></p-tag>
+                        <p-tag [ngStyle] = "{'margin' : '10px'}" styleClass= "text-lg {{poke | colorBackground}}" value="{{poke}}" *ngFor="let poke of pokemon.tipos"></p-tag>
                     </td>
                     <td>
                         <p *ngIf="pokemon.stats">{{pokemon.stats[1].points}}</p>

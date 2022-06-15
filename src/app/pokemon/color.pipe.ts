@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { PokemonService } from './pokemon.service';
 
 @Pipe({
   name: 'colorBackground'
@@ -37,7 +36,7 @@ export class ColorBackgroundPipe implements PipeTransform {
       case "psychic":
         return "bg-pink-300"
       case "ice":
-        return "bg-blue-50"
+        return "bg-blue-200"
       case "dragon":
         return "bg-orange-500"
       case "dark":

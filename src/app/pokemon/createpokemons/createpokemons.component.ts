@@ -2,18 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Location } from '@angular/common';
 import { Pokemon } from '../pokemon.interfaces';
-import { PokemonlistComponent } from '../pokemonlist/pokemonlist.component';
 
 
 @Component({
-  selector: 'app-pokemoncreate',
-  templateUrl: './pokemoncreate.component.html',
-  styleUrls: ['./pokemoncreate.component.css']
+  selector: 'app-createpokemons',
+  templateUrl: './createpokemons.component.html',
+  styleUrls: ['./createpokemons.component.css']
 })
-export class PokemoncreateComponent implements OnInit {
+export class CreatepokemonsComponent implements OnInit  {
 
   public types: string[] = ["cargando..."]
-  newPokemon: Pokemon = {
+  @Input() newPokemon: Pokemon = {
     id: '',
     name: "",
     pic: "",
@@ -54,7 +53,6 @@ export class PokemoncreateComponent implements OnInit {
       .subscribe(resp => {
         this.types = resp
       })
-    console.log(this.newPokemon)
   }
 
   goBack() {
@@ -70,7 +68,7 @@ export class PokemoncreateComponent implements OnInit {
   }
 
   addPokemon(){
-    this.newPokemon.id = Math.random().toString();
+    this.newPokemon.id = Math.random().toString().split(".")[1];
     this.pokemonService.addPokemon(this.newPokemon)
     this.newPokemon = {
       id: '',

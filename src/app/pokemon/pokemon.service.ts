@@ -10,12 +10,18 @@ export class PokemonService {
 
   private url: string = "https://pokeapi.co/api/v2"
   private _newPokemons: Pokemon[] = [{
-    id: Math.random().toString(),
-    name: "NuevoPokemon",
+    id: Math.random().toString().split(".")[1],
+    name: "aabuevoPokemon",
     pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
     tipos: ["electric", "unknown"],
     stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
-  }];
+  },{
+    id: Math.random().toString().split(".")[1],
+    name: "zzzzzuevoPokemon",
+    pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
+    tipos: ["normal", "grass"],
+    stats: [{ name: "hp", points: 1 }, { name: "attack", points: 1 }, { name: "defense", points: 1 }, { name: "special-attack", points: 1 }, { name: "special-defense", points: 1 },{ name: "speed", points: 1 }, ]
+  },];
 
   get newPokemons(): Pokemon[] {
     return [...this._newPokemons]

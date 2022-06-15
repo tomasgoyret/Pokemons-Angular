@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { PokemonDetail } from '../pokemon.interfaces';
-import { Location } from '@angular/common';
+import { Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-pokemondetail',
@@ -12,7 +13,7 @@ import { Location } from '@angular/common';
 export class PokemondetailComponent implements OnInit {
 
   public loaded = false;
-  public pokemonDetail : PokemonDetail = {
+  public pokemonDetail: PokemonDetail = {
     id: 0,
     name: "",
     pic: "",
@@ -23,16 +24,24 @@ export class PokemondetailComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
-    private location: Location
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get("id"))
-    this.pokemonService.getPokemonDetail(id)
+    if( id < 2000) {
+      this.pokemonService.getPokemonDetail(id)
+        .subscribe((p) => {
+          this.pokemonDetail = p
+          this.loaded = true;          
+        })
+    } else {
+      this.getPokemonCreatedDetail()
       .subscribe((p) => {
         this.pokemonDetail = p
-        this.loaded = true;
+        this.loaded = true;          
       })
+         
+    }
   }
 
   getPokemonDetail() {
@@ -42,11 +51,19 @@ export class PokemondetailComponent implements OnInit {
         this.pokemonDetail = p
         this.loaded = true;
       })
-    };
+  };
 
-    goBack(){
-        this.location.back();
+  getPokemonCreatedDetail() : Observable<PokemonDetail> {
+    const id = Number(this.route.snapshot.paramMap.get("id"))
+      let found = this.pokemonService.newPokemons.find(p => p.id == id.toString())
+      let response: PokemonDetail = {
+        id: found ? parseInt(found.id) : 0,
+        name: found ? found.name : "",
+        pic: found ? found.pic : "",
+        stats: found ? found.stats : [],
+        types: found ? found.tipos : []
       }
-    
+      const respuesta = of(response)
+      return respuesta
+  }
 }
-

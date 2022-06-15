@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PokemondetailComponent } from './pokemon/pokemondetail/pokemondetail.component';
 import { PokemonlistComponent } from './pokemon/pokemonlist/pokemonlist.component';
-import { PokemoncreateComponent } from './pokemon/pokemoncreate/pokemoncreate.component';
 
 const routes: Routes = [
-  {path:"pokemon/:id", component: PokemondetailComponent},
   {path:"", component: PokemonlistComponent},
-  {path:"new", component: PokemoncreateComponent},
+  {path:"newpokemon",
+  loadChildren: () => import('./pokemon/createpokemons/createpokemons.module').then(m => m.CreatepokemonsModule) },
+  // children : [
+
+  // ]},
+  {path:"pokemon/:id", component: PokemondetailComponent},
 ];
 
 @NgModule({

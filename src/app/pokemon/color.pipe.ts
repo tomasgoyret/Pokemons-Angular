@@ -11,45 +11,45 @@ export class ColorBackgroundPipe implements PipeTransform {
 
     switch(poke) {
       case "normal":
-        return "red"
+        return "bg-indigo-400"
       case "fighting":
-        return "blue"
+        return "bg-red-800"
       case "flying":
-        return "yellow"
+        return "bg-teal-700"
       case "poison":
-        return "green"
+        return "bg-purple-500"
       case "ground":
-        return "purple"
+        return "bg-yellow-800"
       case "rock":
-        return "orange"
+        return "bg-bluegray-500"
       case "bug":
-        return "dark-green"
+        return "bg-green-600"
       case "ghost":
-        return "black"
+        return "surface-400"
       case "fire":
-        return "red"
+        return "bg-red-500"
       case "water":
-        return "blue"
+        return "bg-primary-400"
       case "grass":
-        return "blue"
+        return "bg-green-400"
       case "electric":
-        return "yellow"
+        return "bg-yellow-500"
       case "psychic":
-        return "blue"
+        return "bg-pink-300"
       case "ice":
-        return "blue"
+        return "bg-blue-50"
       case "dragon":
-        return "blue"
+        return "bg-orange-500"
       case "dark":
-        return "blue"
+        return "surface-900"
       case "fairy":
-        return "blue"
+        return "bg-pink-100"
       case "unknown":
-        return "blue"
+        return "surface-600"
       case "shadow":
-        return "blue"
+        return "surface-800"
       default:
-        return "grey"
+        return "bg-primary-reverse"
     }
 
     

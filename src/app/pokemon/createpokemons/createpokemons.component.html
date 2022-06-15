@@ -1,7 +1,8 @@
+<router-outlet></router-outlet>
 <h1 class="mt-5">Nuevo Pokemon</h1>
 <hr>
 <!-- <button class="btn btn-primary" (click)="goBack()">Volver</button> -->
-<a href="/">Volver</a>
+<a routerLink="/">Volver</a>
 <br>
 
 <table class="table">
@@ -32,11 +33,11 @@
 </table>
 
 
-
 <div class="form-floating" [ngStyle]="{'margin' : '30px 0px'}">
     <input class="form-control" [(ngModel)]="newPokemon.name" type="text" placeholder="Nombre" id="floatingTextarea" />
     <label for="floatingTextarea">Nombre</label>
 </div>
+
 
 <label for="basic-url" class="form-label">Url Foto </label>
 <div class="input-group mb-3">

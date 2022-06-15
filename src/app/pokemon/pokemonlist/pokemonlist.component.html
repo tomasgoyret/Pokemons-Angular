@@ -13,7 +13,7 @@
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="previousPage()" >Anteriores</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="nextPage()" [disabled] = "(pokemons | filtro:page:search).length === 0">Siguientes</button>
+<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="nextPage()" [disabled] = "(pokemons3 | filtro:page:search).length === 0">Siguientes</button>
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="orderAZ()">A - Z</button>
 &nbsp; 
@@ -23,7 +23,9 @@
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="orderbyWeaker()" >Más Débil</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning p-button-text"> <a [ngStyle]="{'color' : '#FBC02D', 'text-decoration' : 'none'}" href="/new" > Crear un pokemon </a></button>
+<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="getPokemonsCreados()" > Pokemons Creados</button>
+&nbsp; 
+<button type="button" pButton  class="p-button-raised p-button-warning p-button-text"> <a [ngStyle]="{'color' : '#FBC02D', 'text-decoration' : 'none'}" routerLink="/newpokemon" > Crear un pokemon </a></button>
 
 <select [ngStyle]="{'margin' : '30px 0px'}" class="form-select" #mySelect (change)="filterByType(mySelect.value)">
     <option value="limpiar">Todos</option>
@@ -45,19 +47,25 @@
             <tr  [ngStyle]="{'height' : '150px'}" *ngFor="let pokemon of pokemons3 | filtro:page:search">
                 
                     <td [ngStyle]="{'width' : '200px'}">
-                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" routerLink="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>
                     </td>
 
                     <td [ngStyle]="{'width' : '250px'}">
-                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">{{pokemon.name}}</a>
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" routerLink="/pokemon/{{pokemon.id}}">{{pokemon.name}}</a>
                     </td>
                     <td>
-                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" href="/pokemon/{{pokemon.id}}">
+                        <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" routerLink="/pokemon/{{pokemon.id}}">
                             <img src="{{pokemon.pic}}" [ngStyle]="{'width' : '100px'}" />
                         </a>
                     </td>
                     <td>
-                        <p *ngFor="let poke of pokemon.tipos" [ngStyle] = "{'background-color': poke | colorBackground}">{{poke}}</p>
+                        <!-- <span class="badge" [ngStyle]= "{'background-color' : poke | colorBackground}" *ngFor="let poke of pokemon.tipos">{{poke}}</span> -->
+
+
+                        <!-- <span class="badge" [ngClass]= "poke | colorBackground" *ngFor="let poke of pokemon.tipos">{{poke}}</span> -->
+
+
+                        <p-tag [ngStyle] = "{'margin' : '10px'}" [styleClass]= "poke | colorBackground" value="{{poke}}" *ngFor="let poke of pokemon.tipos"></p-tag>
                     </td>
                     <td>
                         <p *ngIf="pokemon.stats">{{pokemon.stats[1].points}}</p>
@@ -66,4 +74,3 @@
         </tbody>
 
     </table>
-    <app-pokemoncreate></app-pokemoncreate>

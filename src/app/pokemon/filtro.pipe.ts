@@ -12,7 +12,6 @@ export class FiltroPipe implements PipeTransform {
     }
 
     const filteredPokemon = pokemons.filter( p => p.name.includes(search))
-
     return filteredPokemon.slice(page,page+4);
     
   }

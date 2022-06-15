@@ -81,7 +81,6 @@ export class PokemonlistComponent implements OnInit {
   orderAZ() {
     this.page = 0;
     this.search = "";
-    this.getAllPokemonsWithTipes()
     const orderedPokemons = this.pokemons2.sort(function (a, b) {
       if (a.name > b.name) {
         return 1;
@@ -96,7 +95,6 @@ export class PokemonlistComponent implements OnInit {
   orderZA() {
     this.page = 0;
     this.search = "";
-    this.getAllPokemonsWithTipes()
     const orderedPokemons = this.pokemons2.sort(function (a, b) {
       if (a.name > b.name) {
         return -1;
@@ -112,7 +110,6 @@ export class PokemonlistComponent implements OnInit {
   orderbyWeaker() {
     this.page = 0;
     this.search = "";
-    this.getAllPokemonsWithTipes()
     const orderedPokemonsByStrength = this.pokemons2.sort(function (a, b) {
       if (a.stats[1].points > b.stats[1].points) {
         return 1;
@@ -129,7 +126,6 @@ export class PokemonlistComponent implements OnInit {
   orderbyStronger() {
     this.page = 0;
     this.search = "";
-    this.getAllPokemonsWithTipes()
     const orderedPokemonsByStrength = this.pokemons2.sort(function (a, b) {
       if (a.stats[1].points > b.stats[1].points) {
         return -1;

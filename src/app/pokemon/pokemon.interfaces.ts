@@ -39,14 +39,6 @@ export interface FetchPokemonDetail {
     weight: number;
 }
 
-export interface PokemonDetail {
-    id: number;
-    name: string;
-    pic: string;
-    stats: Stats[];
-    types: string[];
-}
-
 
 export interface Stats {
     name: string;

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  map, Observable} from 'rxjs';
-import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail } from './pokemon.interfaces';
+import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon } from './pokemon.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,21 +28,15 @@ export class PokemonService {
   }
 
   
-
   constructor(
     private http: HttpClient
   ) { }
 
-  getAllPokemons(): Observable<Pokemon[]> {
+  getAllPokemonsFromApi(): Observable<Pokemon[]> {
     return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
       .pipe(
         map(this.transformSmallPokemonIntoPokemon),
       )
-  }
-
-
-  getCreatedPokemons():Pokemon[] {
-    return this.newPokemons
   }
 
   getPokemonDetail(id: number): Observable<Pokemon> {
@@ -77,8 +71,8 @@ export class PokemonService {
         id,
         name: poke.name,
         pic,
-        tipos: ["default"],
-        stats: [{name: "cargando", points: 0}]
+        tipos: ["unknown"],
+        stats: [{name: "hp", points: 0}]
       }
     })
     return pokemonList

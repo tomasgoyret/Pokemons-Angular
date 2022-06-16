@@ -33,7 +33,7 @@ export class PokemonlistComponent implements OnInit {
     this.page = 0;
     this.search = "";
     this.pokemons3 = [];
-    this.pokemonService.getAllPokemons()
+    this.pokemonService.getAllPokemonsFromApi()
       .subscribe(resp => {
         this.pokemons2 = resp
         this.getAllPokemonsWithTipes()

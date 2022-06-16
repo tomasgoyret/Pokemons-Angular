@@ -11,9 +11,9 @@
 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="ngOnInit()" >Reset</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="previousPage()" >Anteriores</button>
+<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" [disabled]="0 >= page" (click)="previousPage()" >Anteriores</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="nextPage()" [disabled] = "(pokemons3 | filtro:page:search).length === 0">Siguientes</button>
+<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" [disabled]="4 > (pokemonsShow | filtro:page:search).length"(click)="nextPage()" >Siguientes</button>
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="orderAZ()">A - Z</button>
 &nbsp; 
@@ -44,7 +44,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr  [ngStyle]="{'height' : '150px'}" *ngFor="let pokemon of pokemons3 | filtro:page:search">
+            <tr  [ngStyle]="{'height' : '150px'}" *ngFor="let pokemon of pokemonsShow | filtro:page:search">
                 
                     <td [ngStyle]="{'width' : '200px'}">
                         <a [ngStyle]="{'color' : 'black', 'text-decoration' : 'none'}" routerLink="/pokemon/{{pokemon.id}}">{{pokemon.id}}</a>

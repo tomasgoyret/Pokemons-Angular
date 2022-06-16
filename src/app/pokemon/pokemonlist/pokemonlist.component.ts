@@ -10,20 +10,24 @@ import { Pokemon } from '../pokemon.interfaces';
 })
 export class PokemonlistComponent implements OnInit {
 
-  private pokemons2: Pokemon[] = []
-  private _pokemons3: Pokemon[] = []
+  private pokemonsBU: Pokemon[] = []
+  private _pokemonsShow: Pokemon[] = []
   public page: number = 0;
   search: string = "";
   public types: string[] = ["cargando..."]
 
-  get pokemons3 () : Pokemon[] {
-    return [...this._pokemons3]
+  get pokemonsShow () : Pokemon[] {
+    return [...this._pokemonsShow]
   }
 
-  set pokemons3 (pokemons: Pokemon[]) {
-    this._pokemons3 = pokemons
+  get existPokemonsToShow(): boolean {
+    if(this._pokemonsShow.length > 0) return true
+    return false;
   }
 
+  set pokemonsShow (pokemons: Pokemon[]) {
+    this._pokemonsShow = pokemons
+  }
 
   constructor(
     private pokemonService: PokemonService,
@@ -32,13 +36,13 @@ export class PokemonlistComponent implements OnInit {
   ngOnInit(): void {
     this.page = 0;
     this.search = "";
-    this.pokemons3 = [];
+    this.pokemonsShow = [];
     this.pokemonService.getAllPokemonsFromApi()
       .subscribe(resp => {
-        this.pokemons2 = resp
+        this.pokemonsBU = resp
         this.getAllPokemonsWithTipes()
-        this.pokemons3 = [...this.pokemonService.newPokemons,...this.pokemons2]
-        this.pokemons2 = this.pokemons3
+        this.pokemonsShow = [...this.pokemonService.newPokemons,...this.pokemonsBU]
+        this.pokemonsBU = this.pokemonsShow
         
       })
     this.pokemonService.getTypes()
@@ -54,15 +58,15 @@ export class PokemonlistComponent implements OnInit {
 
   filterByType(tipo: string) {
     if(tipo != "limpiar"){
-      let filteredPokemon = this.pokemons2.filter(p => p.tipos.includes(tipo))
-      this.pokemons3 = filteredPokemon;
+      let filteredPokemon = this.pokemonsBU.filter(p => p.tipos.includes(tipo))
+      this.pokemonsShow = filteredPokemon;
     } else {
-      this.pokemons3 = this.pokemons2
+      this.pokemonsShow = this.pokemonsBU
     }
   }
 
   getAllPokemonsWithTipes() {
-    const pokemonsWithTypes = this.pokemons2.map((p): Pokemon => {
+    const pokemonsWithTypes = this.pokemonsBU.map((p): Pokemon => {
       this.pokemonService.getPokemonDetail(p.id)
         .subscribe(resp => {
           p.tipos = resp.tipos
@@ -70,18 +74,18 @@ export class PokemonlistComponent implements OnInit {
         })
       return p
     })
-    this.pokemons2 = pokemonsWithTypes
+    this.pokemonsBU = pokemonsWithTypes
     
   }
 
   getPokemonsCreados(){
-    this.pokemons3 = this.pokemonService.newPokemons
+    this.pokemonsShow = this.pokemonService.newPokemons
   }
 
   orderAZ() {
     this.page = 0;
     this.search = "";
-    const orderedPokemons = this.pokemons2.sort(function (a, b) {
+    const orderedPokemons = this.pokemonsBU.sort(function (a, b) {
       if (a.name > b.name) {
         return 1;
       }
@@ -90,12 +94,12 @@ export class PokemonlistComponent implements OnInit {
       }
       return 0;
     });
-    this.pokemons3 = orderedPokemons;
+    this.pokemonsShow = orderedPokemons;
   }
   orderZA() {
     this.page = 0;
     this.search = "";
-    const orderedPokemons = this.pokemons2.sort(function (a, b) {
+    const orderedPokemons = this.pokemonsBU.sort(function (a, b) {
       if (a.name > b.name) {
         return -1;
       }
@@ -104,13 +108,13 @@ export class PokemonlistComponent implements OnInit {
       }
       return 0;
     });
-    this.pokemons3 = orderedPokemons;
+    this.pokemonsShow = orderedPokemons;
   }
 
   orderbyWeaker() {
     this.page = 0;
     this.search = "";
-    const orderedPokemonsByStrength = this.pokemons2.sort(function (a, b) {
+    const orderedPokemonsByStrength = this.pokemonsBU.sort(function (a, b) {
       if (a.stats[1].points > b.stats[1].points) {
         return 1;
       }
@@ -119,14 +123,14 @@ export class PokemonlistComponent implements OnInit {
       }
       return 0;
     });
-    this.pokemons3 = orderedPokemonsByStrength;
+    this.pokemonsShow = orderedPokemonsByStrength;
   }
   
 
   orderbyStronger() {
     this.page = 0;
     this.search = "";
-    const orderedPokemonsByStrength = this.pokemons2.sort(function (a, b) {
+    const orderedPokemonsByStrength = this.pokemonsBU.sort(function (a, b) {
       if (a.stats[1].points > b.stats[1].points) {
         return -1;
       }
@@ -135,24 +139,17 @@ export class PokemonlistComponent implements OnInit {
       }
       return 0;
     });
-    this.pokemons3 = orderedPokemonsByStrength;
+    this.pokemonsShow = orderedPokemonsByStrength;
   }
 
   nextPage() {
     this.page += 4
-    if(this.page >= -5 && this.page < 0){
-      this.page = 0
-    }
+    if(this.page === this.pokemonsShow.length) this.page = this.page-1
     console.log(this.page);
-    
+    console.log(this.pokemonsShow.length);
   }
   previousPage() {
     this.page -= 4
-    if(this.page >= -5){
-      this.page = -5
-    }
-    console.log(this.page);
-
     
     
   }

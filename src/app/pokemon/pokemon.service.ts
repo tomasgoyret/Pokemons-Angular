@@ -9,7 +9,10 @@ import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon } from './pokemon.
 export class PokemonService {
 
   private url: string = "https://pokeapi.co/api/v2"
-  private _newPokemons: Pokemon[] = [{
+
+  //Pokemons que se crean
+  private _newPokemons: Pokemon[] = [
+    {
     id: Math.floor(Math.random()*1000000),
     name: "aabuevoPokemon",
     pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
@@ -21,7 +24,8 @@ export class PokemonService {
     pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
     tipos: ["normal", "grass"],
     stats: [{ name: "hp", points: 1 }, { name: "attack", points: 1 }, { name: "defense", points: 1 }, { name: "special-attack", points: 1 }, { name: "special-defense", points: 1 },{ name: "speed", points: 1 }, ]
-  },];
+  },
+];
 
   get newPokemons(): Pokemon[] {
     return [...this._newPokemons]
@@ -33,7 +37,7 @@ export class PokemonService {
   ) { }
 
   getAllPokemonsFromApi(): Observable<Pokemon[]> {
-    return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
+    return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=10`)
       .pipe(
         map(this.transformSmallPokemonIntoPokemon),
       )

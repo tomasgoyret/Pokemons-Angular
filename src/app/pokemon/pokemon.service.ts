@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { concat, concatWith, map, mergeWith, Observable, pipe, switchMap, tap } from 'rxjs';
-import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail, PokemonsWithTypes } from './pokemon.interfaces';
+import {  map, Observable} from 'rxjs';
+import { FetchAllPokemonResponse, FetchPokemonDetail, Pokemon, PokemonDetail } from './pokemon.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,13 @@ export class PokemonService {
 
   private url: string = "https://pokeapi.co/api/v2"
   private _newPokemons: Pokemon[] = [{
-    id: Math.random().toString().split(".")[1],
+    id: Math.floor(Math.random()*1000000),
     name: "aabuevoPokemon",
     pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
     tipos: ["electric", "unknown"],
     stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
   },{
-    id: Math.random().toString().split(".")[1],
+    id: Math.floor(Math.random()*1000000),
     name: "zzzzzuevoPokemon",
     pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
     tipos: ["normal", "grass"],
@@ -45,7 +45,7 @@ export class PokemonService {
     return this.newPokemons
   }
 
-  getPokemonDetail(id: number): Observable<PokemonDetail> {
+  getPokemonDetail(id: number): Observable<Pokemon> {
     
     return this.http.get<FetchPokemonDetail>(`${this.url}/pokemon/${id}`)
       .pipe(
@@ -56,7 +56,7 @@ export class PokemonService {
   getTypes() : Observable<string[]> {
     return this.http.get<FetchAllPokemonResponse>(`${this.url}/type`)
       .pipe(
-        map(this.transformPokemonTaypesResponseIntoPokemonType),
+        map(this.transformPokemonTypesResponseIntoPokemonType),
       )
 
   }
@@ -71,7 +71,7 @@ export class PokemonService {
     const pokemonList: Pokemon[] = resp.results.map(poke => {
 
       const urlArr = poke.url.split('/')
-      const id = urlArr[6]
+      const id = parseInt(urlArr[6])
       const pic = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
       return {
         id,
@@ -84,7 +84,7 @@ export class PokemonService {
     return pokemonList
   }
 
-  private transformPokemonTaypesResponseIntoPokemonType(resp: FetchAllPokemonResponse) {
+  private transformPokemonTypesResponseIntoPokemonType(resp: FetchAllPokemonResponse) {
     const types: string[] = resp.results.map( poke => {
       return poke.name
     })
@@ -92,7 +92,7 @@ export class PokemonService {
   }
 
   private transformPokemonDetailResponseIntoPokemonDetail(resp: FetchPokemonDetail) {
-    const pokemonbyID: PokemonDetail = {
+    const pokemonbyID: Pokemon = {
       id: resp.id,
       name: resp.name,
       pic: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${resp.id}.png`,
@@ -103,7 +103,7 @@ export class PokemonService {
         }
         return stats
       }),
-      types: resp.types.map(t => t.type.name)
+      tipos: resp.types.map(t => t.type.name)
     }
     return pokemonbyID
   }

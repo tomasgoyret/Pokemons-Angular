@@ -13,7 +13,7 @@ export class CreatepokemonsComponent implements OnInit  {
 
   public types: string[] = ["cargando..."]
   @Input() newPokemon: Pokemon = {
-    id: '',
+    id: 0,
     name: "",
     pic: "",
     tipos: [],
@@ -68,10 +68,10 @@ export class CreatepokemonsComponent implements OnInit  {
   }
 
   addPokemon(){
-    this.newPokemon.id = Math.random().toString().split(".")[1];
+    this.newPokemon.id = Math.floor(Math.random()*1000000),
     this.pokemonService.addPokemon(this.newPokemon)
     this.newPokemon = {
-      id: '',
+      id: 0,
       name: "",
       pic: "",
       tipos: [],

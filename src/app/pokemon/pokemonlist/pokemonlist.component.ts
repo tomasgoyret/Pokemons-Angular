@@ -63,9 +63,9 @@ export class PokemonlistComponent implements OnInit {
 
   getAllPokemonsWithTipes() {
     const pokemonsWithTypes = this.pokemons2.map((p): Pokemon => {
-      this.pokemonService.getPokemonDetail(parseInt(p.id))
+      this.pokemonService.getPokemonDetail(p.id)
         .subscribe(resp => {
-          p.tipos = resp.types
+          p.tipos = resp.tipos
           p.stats = resp.stats 
         })
       return p

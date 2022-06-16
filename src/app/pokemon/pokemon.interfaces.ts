@@ -11,7 +11,7 @@ export interface SmallPokemon {
 }
 
 export interface Pokemon {
-    id: string;
+    id: number;
     name: string;
     pic: string;
     tipos: string[];
@@ -46,13 +46,7 @@ export interface PokemonDetail {
     stats: Stats[];
     types: string[];
 }
-export interface PokemonsWithTypes {
-    id: number;
-    name: string;
-    pic: string;
-    stats: any[];
-    types: string[];
-}
+
 
 export interface Stats {
     name: string;

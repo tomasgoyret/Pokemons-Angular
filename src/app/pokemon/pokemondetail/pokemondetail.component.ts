@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
-import { PokemonDetail } from '../pokemon.interfaces';
+import { Pokemon } from '../pokemon.interfaces';
 import { Observable, of } from 'rxjs';
 
 
@@ -13,12 +13,12 @@ import { Observable, of } from 'rxjs';
 export class PokemondetailComponent implements OnInit {
 
   public loaded = false;
-  public pokemonDetail: PokemonDetail = {
+  public pokemonDetail: Pokemon = {
     id: 0,
     name: "",
     pic: "",
     stats: [],
-    types: []
+    tipos: []
   };
 
   constructor(
@@ -53,15 +53,15 @@ export class PokemondetailComponent implements OnInit {
       })
   };
 
-  getPokemonCreatedDetail() : Observable<PokemonDetail> {
+  getPokemonCreatedDetail() : Observable<Pokemon> {
     const id = Number(this.route.snapshot.paramMap.get("id"))
-      let found = this.pokemonService.newPokemons.find(p => p.id == id.toString())
-      let response: PokemonDetail = {
-        id: found ? parseInt(found.id) : 0,
+      let found = this.pokemonService.newPokemons.find(p => p.id == id)
+      let response: Pokemon = {
+        id: found ? found.id : 0,
         name: found ? found.name : "",
         pic: found ? found.pic : "",
         stats: found ? found.stats : [],
-        types: found ? found.tipos : []
+        tipos: found ? found.tipos : []
       }
       const respuesta = of(response)
       return respuesta

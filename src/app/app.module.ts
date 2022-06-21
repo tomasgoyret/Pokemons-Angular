@@ -12,6 +12,7 @@ import { ColorBackgroundPipe } from './pokemon/color.pipe';
 import { TagModule } from 'primeng/tag';
 import { PokemoncardComponent } from './pokemon/pokemoncard/pokemoncard.component';
 import {CardModule} from 'primeng/card';
+import { GridstatsComponent } from './pokemon/grid-stats/grid-stats.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {CardModule} from 'primeng/card';
     ColorBackgroundPipe,
     PokemondetailComponent,
     PokemoncardComponent,
+    GridstatsComponent
     
   ],
   imports: [
@@ -31,7 +33,7 @@ import {CardModule} from 'primeng/card';
     HttpClientModule,
     ButtonModule,
     TagModule,
-    CardModule
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

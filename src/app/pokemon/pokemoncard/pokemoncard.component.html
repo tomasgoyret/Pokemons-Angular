@@ -1,0 +1,15 @@
+<p-card header={{pokecard.name}} [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+        <img [style]="{width: '200px'}" alt="Card" src={{pokecard.pic}}>
+    </ng-template>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis deleniti illum earum quisquam accusantium, dolor voluptate fuga? Cumque veritatis totam culpa asperiores voluptate odit, omnis illo deserunt reprehenderit magni dolore.
+    </p>
+    <ng-template pTemplate="footer">
+        <p-tag [ngStyle] = "{'margin' : '10px'}" styleClass= "text-lg {{poke | colorBackground}}" value="{{poke}}" *ngFor="let poke of pokecard.tipos"></p-tag>
+    </ng-template>
+    <!-- <ng-template pTemplate="footer">
+        <p-button label="Save" icon="pi pi-check"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+    </ng-template> -->
+</p-card>

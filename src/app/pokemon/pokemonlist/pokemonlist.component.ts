@@ -56,6 +56,10 @@ export class PokemonlistComponent implements OnInit {
     this.search = search;
   }
 
+  evento(){
+    alert("Bienvenido a la app de Pokemons")
+  }
+
   filterByType(tipo: string) {
     if(tipo != "limpiar"){
       let filteredPokemon = this.pokemonsBU.filter(p => p.tipos.includes(tipo))

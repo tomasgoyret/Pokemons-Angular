@@ -12,19 +12,19 @@ export class PokemonService {
 
   //Pokemons que se crean
   private _newPokemons: Pokemon[] = [
-    {
-    id: Math.floor(Math.random()*1000000),
-    name: "aabuevoPokemon",
-    pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
-    tipos: ["electric", "unknown"],
-    stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
-  },{
-    id: Math.floor(Math.random()*1000000),
-    name: "zzzzzuevoPokemon",
-    pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
-    tipos: ["normal", "grass"],
-    stats: [{ name: "hp", points: 1 }, { name: "attack", points: 1 }, { name: "defense", points: 1 }, { name: "special-attack", points: 1 }, { name: "special-defense", points: 1 },{ name: "speed", points: 1 }, ]
-  },
+  //   {
+  //   id: Math.floor(Math.random()*1000000),
+  //   name: "aabuevoPokemon",
+  //   pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
+  //   tipos: ["electric", "unknown"],
+  //   stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
+  // },{
+  //   id: Math.floor(Math.random()*1000000),
+  //   name: "zzzzzuevoPokemon",
+  //   pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
+  //   tipos: ["normal", "grass"],
+  //   stats: [{ name: "hp", points: 1 }, { name: "attack", points: 1 }, { name: "defense", points: 1 }, { name: "special-attack", points: 1 }, { name: "special-defense", points: 1 },{ name: "speed", points: 1 }, ]
+  // },
 ];
 
   get newPokemons(): Pokemon[] {
@@ -37,7 +37,7 @@ export class PokemonService {
   ) { }
 
   getAllPokemonsFromApi(): Observable<Pokemon[]> {
-    return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
+    return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=10`)
       .pipe(
         map(this.transformSmallPokemonIntoPokemon),
       )

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Location } from '@angular/common';
 import { Pokemon } from '../pokemon.interfaces';
@@ -9,7 +9,7 @@ import { Pokemon } from '../pokemon.interfaces';
   templateUrl: './createpokemons.component.html',
   styleUrls: ['./createpokemons.component.css']
 })
-export class CreatepokemonsComponent implements OnInit  {
+export class CreatepokemonsComponent implements OnInit, OnDestroy  {
 
   public types: string[] = ["cargando..."]
   newPokemon: Pokemon = {
@@ -49,10 +49,17 @@ export class CreatepokemonsComponent implements OnInit  {
   ) { }
 
   ngOnInit(): void {
+    console.log("On Init");
+    
     this.pokemonService.getTypes()
       .subscribe(resp => {
         this.types = resp
       })
+  }
+
+  ngOnDestroy(): void {
+    console.log("Destroy");
+    
   }
 
   goBack() {

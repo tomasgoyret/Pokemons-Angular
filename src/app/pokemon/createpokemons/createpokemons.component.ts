@@ -12,7 +12,7 @@ import { Pokemon } from '../pokemon.interfaces';
 export class CreatepokemonsComponent implements OnInit  {
 
   public types: string[] = ["cargando..."]
-  @Input() newPokemon: Pokemon = {
+  newPokemon: Pokemon = {
     id: 0,
     name: "",
     pic: "",

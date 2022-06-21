@@ -5,6 +5,10 @@
 }
 
 .item {
-    text-align: left;
-    margin-bottom: 0;
+    border-radius: 10px;
+    margin-bottom: 1px;
+    margin-right: 5px;
+    height: 30px;
+    width: 150px ;
+    padding: 1;
 }

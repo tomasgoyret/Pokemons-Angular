@@ -1,5 +1,5 @@
 <div class="container">
     <p class="item bg-orange-100" *ngFor="let stat of stats">
-        {{stat.name}} : {{stat.points}}
+        {{stat.name | titlecase}} : {{stat.points}}
     </p>
 </div>

@@ -1,11 +1,14 @@
-<p-card header={{pokecard.name}} [style]="{width: '360px'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-        <img [style]="{width: '200px'}" alt="Card" src={{pokecard.pic}}>
-    </ng-template>
-    <p>
-        <app-grid-stats></app-grid-stats>
-    </p>
-    <ng-template pTemplate="footer">
-        <p-tag [ngStyle] = "{'margin' : '10px'}" styleClass= "text-lg {{poke | colorBackground}}" value="{{poke}}" *ngFor="let poke of pokecard.tipos"></p-tag>
-    </ng-template>
-</p-card>
+    <div class="card-container" >
+        <p-card class="text-center" header={{pokecard.name}} [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img [style]="{width: '100px'}" alt={{pokecard.id}} src={{pokecard.pic}}>
+            </ng-template>
+            <p>
+                <app-grid-stats [stats]="pokecard.stats"></app-grid-stats>
+            </p>
+            <ng-template pTemplate="footer">
+                <p-tag [ngStyle]="{'margin' : '10px'}" styleClass="text-lg {{poke | colorBackground}} " value="{{poke}}"
+                    *ngFor="let poke of pokecard.tipos"></p-tag>
+            </ng-template>
+        </p-card>
+    </div>

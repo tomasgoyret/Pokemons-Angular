@@ -13,7 +13,7 @@
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" [disabled]="0 >= page" (click)="previousPage()" >Anteriores</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" [disabled]="4 > (pokemonsShow | filtro:page:search).length"(click)="nextPage()" >Siguientes</button>
+<button type="button" pButton  class="p-button-raised p-button-warning p-button-text" [disabled]="3 > (pokemonsShow | filtro:page:search).length" (click)="nextPage()" >Siguientes</button>
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning p-button-text" (click)="orderAZ()">A - Z</button>
 &nbsp; 
@@ -32,7 +32,9 @@
     <option *ngFor="let tipo of types" [value]="tipo">{{tipo}}</option>
 </select>
 
-<app-pokemoncard *ngFor="let pokemon of pokemonsShow | filtro:page:search" [pokecard]="pokemon"></app-pokemoncard>
+<div [ngClass]="'cards'" >
+    <app-pokemoncard routerLink="/pokemon/{{pokemon.id}}" *ngFor="let pokemon of pokemonsShow | filtro:page:search" [pokecard]="pokemon"></app-pokemoncard>
+</div>
 
 
     <!-- <table *ngIf="pokemonsShow.length" class="table">

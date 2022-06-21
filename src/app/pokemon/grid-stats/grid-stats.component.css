@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+.item {
+    text-align: left;
+    margin-bottom: 0;
+}

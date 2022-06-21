@@ -1,1 +1,5 @@
-<p>grid stats</p>
+<div class="container">
+    <p class="item" *ngFor="let stat of stats">
+        {{stat.name}} : {{stat.points}}
+    </p>
+</div>

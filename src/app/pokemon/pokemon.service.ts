@@ -12,19 +12,19 @@ export class PokemonService {
 
   //Pokemons que se crean
   private _newPokemons: Pokemon[] = [
-    {
-    id: Math.floor(Math.random()*1000000),
-    name: "aPokemon",
-    pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
-    tipos: ["electric", "unknown"],
-    stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
-  },{
-    id: Math.floor(Math.random()*1000000),
-    name: "zPokemon",
-    pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
-    tipos: ["normal", "grass"],
-    stats: [{ name: "hp", points: 1 }, { name: "attack", points: 1 }, { name: "defense", points: 1 }, { name: "special-attack", points: 1 }, { name: "special-defense", points: 1 },{ name: "speed", points: 1 }, ]
-  },
+  //   {
+  //   id: Math.floor(Math.random()*1000000),
+  //   name: "aPokemon",
+  //   pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
+  //   tipos: ["electric", "unknown"],
+  //   stats: [{ name: "hp", points: 5000 }, { name: "attack", points: 5000 }, { name: "defense", points: 5000 }, { name: "special-attack", points: 5000 }, { name: "special-defense", points: 5000 },{ name: "speed", points: 5000 }, ]
+  // },{
+  //   id: Math.floor(Math.random()*1000000),
+  //   name: "zPokemon",
+  //   pic: "https://media.shoanime.com/2017/10/Pikachu-portada-1.jpg",
+  //   tipos: ["normal", "grass"],
+  //   stats: [{ name: "hp", points: 1 }, { name: "attack", points: 1 }, { name: "defense", points: 1 }, { name: "special-attack", points: 1 }, { name: "special-defense", points: 1 },{ name: "speed", points: 1 }, ]
+  // },
 ];
 
   get newPokemons(): Pokemon[] {
@@ -70,7 +70,7 @@ export class PokemonService {
 
       const urlArr = poke.url.split('/')
       const id = parseInt(urlArr[6])
-      const pic = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+      const pic = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
       return {
         id,
         name: poke.name,

@@ -1,0 +1,14 @@
+.picture {
+    width: 100px;
+    padding: 10px;
+}
+
+.subtitle {
+    color: gray;
+    padding-left: 5%;
+    margin-bottom: 0;
+}
+.name {
+    padding-left: 5%;
+    margin-bottom: 0;
+}

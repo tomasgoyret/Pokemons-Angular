@@ -32,9 +32,9 @@
     <option *ngFor="let tipo of types" [value]="tipo">{{tipo}}</option>
 </select>
 
-<div class="flex flex-wrap justify-content-center card-container gap-4">
-    <app-pokemoncard routerLink="/pokemon/{{pokemon.id}}" *ngFor="let pokemon of pokemonsShow | filtro:page:search" [pokecard]="pokemon"></app-pokemoncard>
-</div>
+    <div class="flex flex-wrap">
+        <app-pokemoncard routerLink="/pokemon/{{pokemon.id}}" *ngFor="let pokemon of pokemonsShow | filtro:page:search" [pokecard]="pokemon" class="w-3 flex justify-content-center"></app-pokemoncard>
+    </div>
 
 
     <!-- <table *ngIf="pokemonsShow.length" class="table">

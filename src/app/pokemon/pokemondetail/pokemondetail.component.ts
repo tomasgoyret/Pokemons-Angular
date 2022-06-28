@@ -21,26 +21,78 @@ export class PokemondetailComponent implements OnInit {
     tipos: []
   };
 
+  data: any;
+  chartOptions: any;
+
+
+
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
-  ) {}
+  ) {
+
+    console.log(this.data);
+  }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get("id"))
-    if( id < 2000) {
+    if (id < 2000) {
       this.pokemonService.getPokemonDetail(id)
         .subscribe((p) => {
           this.pokemonDetail = p
-          this.loaded = true;          
+          this.loaded = true;
+          this.data = {
+            labels: this.pokemonDetail.stats.map((e) => e.name),
+            datasets: [{
+              label: "Estadísticas",
+              backgroundColor: 'rgba(255,99,132,0.2)',
+              borderColor: 'rgba(255,99,132,1)',
+              pointBackgroundColor: 'rgba(255,99,132,1)',
+              pointBorderColor: '#fff',
+              pointHoverBackgroundColor: '#fff',
+              pointHoverBorderColor: 'rgba(255,99,132,1)',
+              data: this.pokemonDetail.stats.map((e) => e.points),
+              tension: 0
+            }]
+          }
+          this.chartOptions = {
+            plugins: {
+              legend: {
+                display: false
+              }
+            },
+            scales: {
+              // ticks: { 
+              //   max: 190, 
+              //   min: 1, 
+              //   stepSize: 20, 
+              // },
+              r: {
+                pointLabels: {
+                  font: {
+                    size: 20,
+                  },
+                  color: [
+                    'red',    // color for data at index 0
+                    'blue',   // color for data at index 1
+                    'green',  // color for data at index 2
+                    'black',
+                    'pink',
+                    'orange',  // color for data at index 3
+                    //...
+                  ],
+                },
+              },
+            },
+          }
         })
     } else {
       this.getPokemonCreatedDetail()
-      .subscribe((p) => {
-        this.pokemonDetail = p
-        this.loaded = true;          
-      })
-         
+        .subscribe((p) => {
+          this.pokemonDetail = p
+          this.loaded = true;
+        })
+
     }
   }
 
@@ -53,17 +105,17 @@ export class PokemondetailComponent implements OnInit {
       })
   };
 
-  getPokemonCreatedDetail() : Observable<Pokemon> {
+  getPokemonCreatedDetail(): Observable<Pokemon> {
     const id = Number(this.route.snapshot.paramMap.get("id"))
-      let found = this.pokemonService.newPokemons.find(p => p.id == id)
-      let response: Pokemon = {
-        id: found ? found.id : 0,
-        name: found ? found.name : "",
-        pic: found ? found.pic : "",
-        stats: found ? found.stats : [],
-        tipos: found ? found.tipos : []
-      }
-      const respuesta = of(response)
-      return respuesta
+    let found = this.pokemonService.newPokemons.find(p => p.id == id)
+    let response: Pokemon = {
+      id: found ? found.id : 0,
+      name: found ? found.name : "",
+      pic: found ? found.pic : "",
+      stats: found ? found.stats : [],
+      tipos: found ? found.tipos : []
+    }
+    const respuesta = of(response)
+    return respuesta
   }
 }

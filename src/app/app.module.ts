@@ -13,6 +13,7 @@ import { TagModule } from 'primeng/tag';
 import { PokemoncardComponent } from './pokemon/pokemoncard/pokemoncard.component';
 import {CardModule} from 'primeng/card';
 import { GridstatsComponent } from './pokemon/grid-stats/grid-stats.component';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { GridstatsComponent } from './pokemon/grid-stats/grid-stats.component';
     ButtonModule,
     TagModule,
     CardModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

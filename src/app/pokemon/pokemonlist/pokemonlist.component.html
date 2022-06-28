@@ -25,7 +25,7 @@
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="getPokemonsCreados()" > Pokemons Creados</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text"> <a [ngStyle]="{'color' : '#FBC02D', 'text-decoration' : 'none'}" routerLink="/newpokemon" > Crear un pokemon </a></button>
+<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text"  routerLink="/newpokemon"> Crear un pokemon </button>
 
 <select [ngStyle]="{'margin' : '30px 0px'}" class="form-select" #mySelect (change)="filterByType(mySelect.value)">
     <option value="limpiar">Todos</option>

@@ -93,7 +93,7 @@ export class PokemonService {
     const pokemonbyID: Pokemon = {
       id: resp.id,
       name: resp.name,
-      pic: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${resp.id}.png`,
+      pic: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${resp.id}.png`,
       stats: resp.stats.map(p => {
         const stats = {
           name: p.stat.name,

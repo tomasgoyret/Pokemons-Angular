@@ -3,6 +3,6 @@
 
 body {
     font-family: 'Inconsolata', monospace;
-    background: rgb(128, 77, 0);
-    background: linear-gradient(0deg, rgba(128, 77, 0, 1) 0%, rgba(249, 137, 0, 1) 57%, rgba(255,216,58,1) 100%);
+    /* background: rgb(128, 77, 0);
+    background: linear-gradient(0deg, rgba(128, 77, 0, 1) 0%, rgba(249, 137, 0, 1) 57%, rgba(255,216,58,1) 100%); */
 }

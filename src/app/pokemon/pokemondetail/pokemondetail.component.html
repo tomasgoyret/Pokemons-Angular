@@ -1,42 +1,19 @@
-<div *ngIf="!loaded">
-    <h1>Cargando...</h1>
-</div>
-
-<div *ngIf="loaded">
-    <h1 class="h1">{{pokemonDetail.name | uppercase}}</h1>
-    <h2>{{pokemonDetail.id}}</h2>
+<div class="detail-container" *ngIf="loaded">
+    <div class="head">
+        <h1 class="h1">{{pokemonDetail.name | uppercase}}</h1>
+        <h2>#{{pokemonDetail.id}}</h2>
+    </div>
     <button class="btn btn-primary" routerLink="/">Volver</button>
     <br>
-
-    
-    <h2>Tipo: </h2>
-    <h3 [ngStyle]="{'color' : 'grey'}" *ngFor="let tipo of pokemonDetail.tipos">    {{tipo}}   </h3>
+    <!-- <h2>Tipo: </h2>
+    <h3 [ngStyle]="{'color' : 'grey'}" *ngFor="let tipo of pokemonDetail.tipos">    {{tipo}}   </h3> -->
     &nbsp;
-    
-    <img class="rounded mx-auto d-block" src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '300px'}"
-        alt=" Sin imagen" />
 
-        <div class="w-4 h-4rem ">
-            <p-chart type="radar" [data]="data" [options]="chartOptions"></p-chart>
-        </div>
 
-    <!-- <table class="table">
-        <thead>
-            <tr>
-                <th>Habilidad</th>
-                <th>Puntos</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr [ngStyle]="{'height' : '100px'}" *ngFor="let stats of pokemonDetail.stats">
-                <td [ngStyle]="{'width' : '10px'}">
-                    {{stats.name}}
-                </td>
-                <td [ngStyle]="{'width' : '10px'}">
-                    {{stats.points}}
-                </td>
-            </tr>
-        </tbody>
-    </table> -->
+    <div class="w-4 h-4rem content">
+        <img src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '200px', 'height' : '200px'}"
+            alt=" Sin imagen" />
+        <p-chart type="radar" [data]="data" [options]="chartOptions"></p-chart>
+    </div>
 
 </div>

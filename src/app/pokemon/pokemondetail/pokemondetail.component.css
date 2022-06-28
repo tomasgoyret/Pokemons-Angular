@@ -1,0 +1,12 @@
+.head {
+    text-align: center;
+}
+
+.head h2 {
+    margin-left: 1rem;
+    color: var(--surface-600);
+}
+
+.content  {
+    flex-direction: row;
+}

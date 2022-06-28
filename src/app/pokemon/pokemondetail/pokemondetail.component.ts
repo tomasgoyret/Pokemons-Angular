@@ -76,10 +76,9 @@ export class PokemondetailComponent implements OnInit {
                     'red',    // color for data at index 0
                     'blue',   // color for data at index 1
                     'green',  // color for data at index 2
-                    'black',
+                    'black', // color for data at index 3
                     'pink',
-                    'orange',  // color for data at index 3
-                    //...
+                    'orange',
                   ],
                 },
               },

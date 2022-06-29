@@ -52,7 +52,6 @@ export class PokemondetailComponent implements OnInit {
               pointHoverBackgroundColor: '#fff',
               pointHoverBorderColor: 'rgba(255,99,132,1)',
               data: this.pokemonDetail.stats.map((e) => e.points),
-              tension: 0
             }]
           }
           this.chartOptions = {
@@ -68,6 +67,11 @@ export class PokemondetailComponent implements OnInit {
               //   stepSize: 20, 
               // },
               r: {
+                min: 5,
+                max: 190,
+                ticks: {
+                  stepSize: 30
+                },
                 pointLabels: {
                   font: {
                     size: 20,

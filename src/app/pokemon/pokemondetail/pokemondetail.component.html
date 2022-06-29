@@ -1,19 +1,31 @@
-<div class="detail-container" *ngIf="loaded">
+<!-- <div class="detail-container" *ngIf="loaded">
     <div class="head">
         <h1 class="h1">{{pokemonDetail.name | uppercase}}</h1>
         <h2>#{{pokemonDetail.id}}</h2>
+        <p-button class="h-3rem" routerLink="/">Volver</p-button>
     </div>
-    <button class="btn btn-primary" routerLink="/">Volver</button>
     <br>
-    <!-- <h2>Tipo: </h2>
-    <h3 [ngStyle]="{'color' : 'grey'}" *ngFor="let tipo of pokemonDetail.tipos">    {{tipo}}   </h3> -->
-    &nbsp;
-
-
     <div class="w-4 h-4rem content">
-        <img src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '200px', 'height' : '200px'}"
-            alt=" Sin imagen" />
-        <p-chart type="radar" [data]="data" [options]="chartOptions"></p-chart>
+        <img src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '300px', 'height' : '300px'}" alt=" Sin imagen" />
+        <p-chart type="radar" [data]="data" width="500px" [options]="chartOptions"></p-chart>
     </div>
+    <div class="footer"> 
+        <p-tag styleClass="text-lg {{poke | colorBackground}} h-2rem w-10 m-1 p-3 m-0 mb-4 " value="{{poke}}" *ngFor="let poke of pokemonDetail.tipos"></p-tag>
+    </div>
+</div> -->
 
+<div class="head">
+    <h1 class="h1">{{pokemonDetail.name | uppercase}}</h1>
+    <h2>#{{pokemonDetail.id}}</h2>
+    <p-button class="h-3rem" routerLink="/">Volver</p-button>
 </div>
+<div class="content">
+    <div class="ima-type">
+        <img src="{{pokemonDetail.pic}}" [ngStyle]="{'width' : '300px', 'height' : '300px'}" alt=" Sin imagen" />
+        <div class="tipos-container">
+            <p-tag class="tipos" styleClass="text-lg {{poke | colorBackground}}" value="{{poke}}"
+                *ngFor="let poke of pokemonDetail.tipos"></p-tag>
+        </div>
+    </div>
+    <p-chart class="chart" type="radar" [data]="data" width="500px" [options]="chartOptions"></p-chart>
+</div>`

@@ -20,4 +20,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-//TODO

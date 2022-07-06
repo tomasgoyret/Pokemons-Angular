@@ -31,7 +31,6 @@ export class PokemondetailComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
 
-    console.log(this.data);
   }
 
   ngOnInit(): void {

@@ -6,7 +6,6 @@ export interface AppState {
 }
 
 
-
 export function pokemonReducer ( state : AppState = {
     allPokemons: [{
     id: 1,

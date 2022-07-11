@@ -14,6 +14,8 @@ import { PokemoncardComponent } from './pokemon/pokemoncard/pokemoncard.componen
 import {CardModule} from 'primeng/card';
 import { GridstatsComponent } from './pokemon/grid-stats/grid-stats.component';
 import { ChartModule } from 'primeng/chart';
+import { StoreModule } from '@ngrx/store';
+import { pokemonReducer } from './pokemon/redux/pokemon.reducer';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { ChartModule } from 'primeng/chart';
     ButtonModule,
     TagModule,
     CardModule,
-    ChartModule
+    ChartModule,
+    StoreModule.forRoot({pokemons : pokemonReducer}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,9 +12,7 @@ export class PokemoncardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.pokecard.stats);
-    
+  ngOnInit(): void {    
   }
 
 }

@@ -38,8 +38,6 @@ const initialState : AppState = {
 // }
 
 export const pokemonReducer = createReducer(
-    initialState,
-    on( allPokemons, (state, {payload}) =>  state = {
-        allPokemons : [...payload]
-    })
+    initialState.allPokemons,
+    on( allPokemons, (state, {payload}) =>  state = [...payload])
 )

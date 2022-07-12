@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon.interfaces';
 import { Store } from '@ngrx/store';

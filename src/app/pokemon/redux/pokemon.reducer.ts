@@ -41,3 +41,5 @@ export const pokemonReducer = createReducer(
     initialState.allPokemons,
     on( allPokemons, (state, {payload}) =>  state = [...payload])
 )
+
+//TODO : HACER ALGO

@@ -1,6 +1,9 @@
 import { Component, Injectable, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon.interfaces';
+import { Store } from '@ngrx/store';
+import { AppState } from '../redux/pokemon.reducer';
+import { allPokemons } from '../redux/action.creadtor';
 
 
 @Component({
@@ -31,6 +34,7 @@ export class PokemonlistComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
+    private store : Store<AppState>,
     
   ) { }
 
@@ -44,6 +48,7 @@ export class PokemonlistComponent implements OnInit {
         this.getAllPokemonsWithTipes()
         this.pokemonsShow = [...this.pokemonService.newPokemons,...this.pokemonsBU]
         this.pokemonsBU = this.pokemonsShow
+        
         
       })
     this.pokemonService.getTypes()
@@ -85,6 +90,10 @@ export class PokemonlistComponent implements OnInit {
 
   getPokemonsCreados(){
     this.pokemonsShow = this.pokemonService.newPokemons
+  }
+
+  action() {
+    this.store.dispatch(allPokemons({payload: this.pokemonsBU}))
   }
 
   orderAZ() {

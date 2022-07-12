@@ -16,6 +16,8 @@ import { GridstatsComponent } from './pokemon/grid-stats/grid-stats.component';
 import { ChartModule } from 'primeng/chart';
 import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './pokemon/redux/pokemon.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { pokemonReducer } from './pokemon/redux/pokemon.reducer';
     TagModule,
     CardModule,
     ChartModule,
-    StoreModule.forRoot({pokemons : pokemonReducer}, {})
+    StoreModule.forRoot({pokemon : pokemonReducer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

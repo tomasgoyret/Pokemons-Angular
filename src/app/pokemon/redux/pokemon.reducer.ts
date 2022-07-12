@@ -1,31 +1,45 @@
-import { Action } from "@ngrx/store";
+import { Action, createReducer, on } from "@ngrx/store";
 import { Pokemon } from "../pokemon.interfaces";
+import { allPokemons } from "./action.creadtor";
+import { GET_ALL_POKEMONS } from "./actions.types";
 
 export interface AppState {
     allPokemons : Array<Pokemon>;
 }
 
-
-export function pokemonReducer ( state : AppState = {
-    allPokemons: [{
-    id: 1,
-    name: "eTC",
-    pic: "",
-    stats: [],
-    tipos: []
-  }]}, action: Action) {
-    switch (action.type){
-        case "GET_ALL_POKEMONS":
-                state = {
-                    allPokemons: [...state.allPokemons, {
-                    id: 2,
-                    name: "Otro",
-                    pic: "",
-                    stats: [],
-                    tipos: []
-                  }]}
-            return state
-        default:
-            return state
-    }
+const initialState : AppState = {
+    allPokemons : [{
+            id: 1,
+            name: "Tomas",
+            pic: "sin",
+            stats: [],
+            tipos: []
+          }]
 }
+
+
+// export function pokemonReducer ( state : AppState = { allPokemons : [{
+//     id: 0,
+//     name: "",
+//     pic: "",
+//     stats: [],
+//     tipos: []
+//   }]}, action: Action) {
+//     switch (action.type){
+//         case GET_ALL_POKEMONS:
+//                 state = {
+//                     allPokemons: [...state.allPokemons]
+//                 }
+//                 console.log(action, "la accion")
+//             return state
+//         default:
+//             return state
+//     }
+// }
+
+export const pokemonReducer = createReducer(
+    initialState,
+    on( allPokemons, (state, {payload}) =>  state = {
+        allPokemons : [...payload]
+    })
+)

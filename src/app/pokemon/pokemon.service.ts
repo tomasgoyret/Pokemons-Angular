@@ -35,14 +35,7 @@ export class PokemonService {
   constructor(
     private http: HttpClient
   ) { }
-
-  getAllPokemonsFromApi(): Observable<Pokemon[]> {
-    return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
-      .pipe(
-        map(this.transformSmallPokemonIntoPokemon),
-      )
-  }
-
+  
   getPokemonDetail(id: number): Observable<Pokemon> {
     
     return this.http.get<FetchPokemonDetail>(`${this.url}/pokemon/${id}`)
@@ -50,6 +43,13 @@ export class PokemonService {
         map(this.transformPokemonDetailResponseIntoPokemonDetail)
       )
   }
+  getAllPokemonsFromApi(): Observable<Pokemon[]> {
+    return this.http.get<FetchAllPokemonResponse>(`${this.url}/pokemon?limit=1500`)
+      .pipe(
+        map(this.transformSmallPokemonIntoPokemon),
+      )
+  }
+
 
   getTypes() : Observable<string[]> {
     return this.http.get<FetchAllPokemonResponse>(`${this.url}/type`)

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
+import { PokemonService } from './pokemon/pokemon.service';
+import {  allPokemons } from './pokemon/redux/action.creadtor';
 import { AppState } from './pokemon/redux/pokemon.reducer';
 
 @Component({
@@ -10,20 +12,24 @@ import { AppState } from './pokemon/redux/pokemon.reducer';
 export class AppComponent {
   title = 'Pokemon';
 
-  private estado : any = [];
+  estado : any = [];
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    public pokemonService : PokemonService
+    ) {
     this.store.subscribe(state => {
       this.estado = state;
-      console.log(state);
+      console.log(state.allPokemons);
     })
   }
 
   action() {
-    const accion: Action = {
-      type: "GET_ALL_POKEMONS"
-    }
-    this.store.dispatch(accion)
-    console.log(this.estado.pokemons)
+    this.pokemonService.getAllPokemonsFromApi()
+      .subscribe( pokemons => {
+        console.log(pokemons.length,"todos los pokemones");
+        const accion = allPokemons({payload: pokemons})
+        this.store.dispatch(accion)
+      })
   }
 }

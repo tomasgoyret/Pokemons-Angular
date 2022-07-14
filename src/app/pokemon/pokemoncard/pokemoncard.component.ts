@@ -15,4 +15,8 @@ export class PokemoncardComponent implements OnInit {
   ngOnInit(): void {    
   }
 
+  addToFavourite(){
+    alert("Added to favourites")
+  }
+
 }

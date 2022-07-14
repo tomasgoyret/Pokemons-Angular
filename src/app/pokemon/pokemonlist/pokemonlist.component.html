@@ -9,13 +9,13 @@
     (keyup)="onSearchPokemon(txtSearch.value)"
  />
 
-<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="action()" >Llenar Store</button>
+<!-- <button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="action()" >Llenar Store</button> -->
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="ngOnInit()" >Reset</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" [disabled]="0 >= page" (click)="previousPage()" >Anteriores</button>
+<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="previousPage()" >Anteriores</button>
 &nbsp; 
-<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" [disabled]="3 > (pokemonsShow | filtro:page:search).length" (click)="nextPage()" >Siguientes</button>
+<button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="nextPage()" >Siguientes</button>
 &nbsp; 
 <button type="button" pButton  class="p-button-raised p-button-warning bg-orange-800 p-button-text" (click)="orderAZ()">A - Z</button>
 &nbsp; 
@@ -35,7 +35,7 @@
 </select>
 
     <div class="flex flex-wrap">
-        <app-pokemoncard routerLink="/pokemon/{{pokemon.id}}" *ngFor="let pokemon of pokemonsShow | filtro:page:search" [pokecard]="pokemon" class="w-3 flex justify-content-center"></app-pokemoncard>
+        <app-pokemoncard *ngFor="let pokemon of pokemonsShow" [pokecard]="pokemon" class="w-3 flex justify-content-center"></app-pokemoncard>
     </div>
 
 

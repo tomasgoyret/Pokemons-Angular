@@ -35,21 +35,22 @@ export class PokemonlistComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private store : Store<AppState>,
-    
   ) { }
 
   ngOnInit(): void {
     this.page = 0;
     this.search = "";
     this.pokemonsShow = [];
+    this.fetchPokemons()
+  }
+
+  fetchPokemons(){
     this.pokemonService.getAllPokemonsFromApi()
       .subscribe(resp => {
         this.pokemonsBU = resp
         this.getAllPokemonsWithTipes()
         this.pokemonsShow = [...this.pokemonService.newPokemons,...this.pokemonsBU]
-        this.pokemonsBU = this.pokemonsShow
-        
-        
+        this.pokemonsBU = this.pokemonsShow        
       })
     this.pokemonService.getTypes()
       .subscribe(resp => {
@@ -157,15 +158,15 @@ export class PokemonlistComponent implements OnInit {
   }
 
   nextPage() {
-    this.page += 4
-    if(this.page === this.pokemonsShow.length) this.page = this.page-1
-    console.log(this.page);
-    console.log(this.pokemonsShow.length);
+    // this.page += 4
+    // if(this.page === this.pokemonsShow.length) this.page = this.page-1
+    this.pokemonService.next();
+    this.fetchPokemons()
+    
   }
   previousPage() {
-    this.page -= 4
-    
-    
+    this.pokemonService.previous();
+    this.fetchPokemons()   
   }
 
 }

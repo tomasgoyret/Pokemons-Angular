@@ -1,8 +1,8 @@
 <div class="bg-orange-300 m-3 p-3 border-round-lg" [ngStyle]="{'background' : 'blur(3px)'}">
-    <img [style]="{width: '210px', background: 'var(--surface-200)'}" alt={{pokecard.id}} class="border-round-lg"
+    <img routerLink="/pokemon/{{pokecard.id}}" [style]="{width: '210px', background: 'var(--surface-200)'}" alt={{pokecard.id}} class="border-round-lg"
         src={{pokecard.pic}}>
-    <h6 [ngStyle]="{color:'var(--surface-600)', margin: '0.5rem'}">Nº {{pokecard.id}}</h6>
-    <h3 [ngStyle]="{margin: '0.5rem'}">{{pokecard.name | titlecase}}</h3>
+    <h6 [ngStyle]="{color:'var(--surface-600)', margin: '0.5rem'}">Nº {{pokecard.id}}</h6> <span class="pi pi-heart" (click)="addToFavourite()"></span>
+    <h3 routerLink="/pokemon/{{pokecard.id}}" [ngStyle]="{margin: '0.5rem'}">{{pokecard.name | titlecase}}</h3>
     <p-tag styleClass="text-sm {{poke | colorBackground}} h-2rem m-1 p-1 m-0 mb-4 " value="{{poke}}" *ngFor="let poke of pokecard.tipos"></p-tag>
 </div>
 

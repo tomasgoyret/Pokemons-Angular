@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { pokemonReducer } from './pokemon/redux/pokemon.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { FavouritesComponent } from './pokemon/favourites/favourites.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { environment } from '../environments/environment';
     ColorBackgroundPipe,
     PokemondetailComponent,
     PokemoncardComponent,
-    GridstatsComponent
+    GridstatsComponent,
+    FavouritesComponent
     
   ],
   imports: [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../pokemon.interfaces';
 
 @Component({
   selector: 'app-favourites',
@@ -9,7 +10,11 @@ export class FavouritesComponent implements OnInit {
 
   constructor() { }
 
+  public favourites : Pokemon[]  = []
+
   ngOnInit() {
+    this.favourites = JSON.parse(localStorage.getItem("favs") || "[]")
+    console.log(this.favourites)
   }
 
 }
